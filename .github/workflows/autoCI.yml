@@ -1,0 +1,97 @@
+name: Node.js Auto CI
+
+on:
+  push
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    outputs:
+      moduleDir: ${{ steps.auto-ci.outputs.moduleDir}}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+            cache-name: cache-node-modules
+        with:
+            # npm cache files are stored in `~/.npm` on Linux/macOS
+            path: node_modules
+            key: ${{ runner.os }}-${{ hashFiles('**/yarn-lock.json') }}
+            # restore-keys: ${{ runner.os }}-
+      - name: auto-ci
+        id: auto-ci
+        uses: wangziling100/AutoCI@v1.0.6
+        with:
+          configPath: .github/autoCI.config.json
+          #modulesDir: packages
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: ${{steps.auto-ci.outputs.moduleDir}}/coverage
+      - name: Upload codecov yml
+        uses: actions/upload-artifact@v2
+        with:
+          name: codecov-yml
+          path: ${{steps.auto-ci.outputs.moduleDir}}/.github/codecov.yml
+      - name: Upload dist
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: ${{steps.auto-ci.outputs.moduleDir}}/dist
+  codecov:
+    runs-on: ubuntu-latest
+    needs: ci
+    if: ${{needs.ci.outputs.moduleDir!='.'}}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download codecov yml
+        uses: actions/download-artifact@v2
+        with:
+          name: codecov-yml
+          path: ${{needs.ci.outputs.moduleDir}}/
+      - name: Download coverage report
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage-report
+          path: ${{needs.ci.outputs.moduleDir}}/coverage
+      - shell: bash
+        run: ls
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          #file: clover.xml
+          #file: ./coverage/coverage-final.json
+          #files: clover.xml,coverga-final.json,lcov-report
+          directory: ${{needs.ci.outputs.moduleDir}}/coverage
+          flags: unittests
+          #env_vars: OS,PYTHON
+          name: codecov-umbrella
+          fail_ci_if_error: true
+          #path_to_write_report: ./coverage/codecov_report.gz
+
+  publish:
+    runs-on: ubuntu-latest
+    if: ${{needs.ci.outputs.moduleDir!='.'}}
+    needs: ci
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          #always-auth: true
+          #registry-url: https://registry.npmjs.org/
+      - name: Download dist
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: ${{needs.ci.outputs.moduleDir}}/dist
+      - uses: wangziling100/AutoPublish@v1.0.0-alpha.26
+        with:
+          scope: '@wangziling100'
+          strict_error: false
+        env:
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          #GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
