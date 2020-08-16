@@ -32,6 +32,12 @@
  * 2. Show the overflow in Edge and IE.
  */
 
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
@@ -210,6 +216,11 @@ button:-moz-focusring {
  * Removes the default spacing and border for appropriate elements.
  */
 
+
+hr {
+  margin: 0;
+}
+
 button {
   background-color: transparent;
   background-image: none;
@@ -274,6 +285,10 @@ button:focus {
 /*
  * Ensure horizontal rules are visible by default
  */
+
+hr {
+  border-top-width: 1px;
+}
 
 /**
  * Undo the `border-style: none` reset that Normalize applies to images so that
