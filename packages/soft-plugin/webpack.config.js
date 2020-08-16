@@ -14,7 +14,7 @@ module.exports = {
   entry: {
     main: [
       //'./src/css/tailwind.css',
-      './src/components/index',
+      './src/index',
     ]
   },
   // and output it into /dist as bundle.js

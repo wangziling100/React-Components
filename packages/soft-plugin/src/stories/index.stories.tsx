@@ -1,11 +1,9 @@
 import { storiesOf } from "@storybook/react";
-import Plugin from '../components';
+import Plugin from '../index';
 import * as React from 'react';
 storiesOf("Button", module)
-    .add("red",
+    .add("default",
         () => <Plugin css={[]} />
     )
-    .add("blue",
-        () => <Plugin />
-    )
+    
     

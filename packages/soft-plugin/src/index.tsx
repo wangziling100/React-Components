@@ -1,4 +1,4 @@
-import '../css/tailwind.css';
+import './css/tailwind.css';
 import { useState } from 'react';
 import * as React from 'react';
 import { IPlugin } from './types'
