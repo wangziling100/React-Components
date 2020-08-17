@@ -1,0 +1,6 @@
+line:
+  1:
+    - input:
+        param1: 123
+        param2: 456
+    - input: defualt
