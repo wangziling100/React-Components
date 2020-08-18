@@ -14,15 +14,15 @@ module.exports = {
   entry: {
     main: [
       //'./src/css/tailwind.css',
-      './src/index',
-      './src/lib/tools'
+      //'./src/lib/tools',
+      './src/index'
     ]
   },
   // and output it into /dist as bundle.js
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
-    library: '@wangziling100/state-manager',
+    //library: '@wangziling100/state-manager',
     publicPath: '/'
   },
   optimization:{
