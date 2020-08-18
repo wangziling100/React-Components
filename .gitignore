@@ -1,2 +1,5 @@
 node_modules
 packages/test-example*
+packages/input
+**/components/test*
+**/test.stories*
