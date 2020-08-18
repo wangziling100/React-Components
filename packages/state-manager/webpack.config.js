@@ -22,6 +22,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
+    library: '@wangziling100/state-manager',
     publicPath: '/'
   },
   optimization:{
