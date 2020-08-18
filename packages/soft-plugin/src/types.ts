@@ -1,7 +1,6 @@
 export interface IConfig{
-    name: string;
-    description?: string;
-    defaultValue?: any;
+    config: Object;
+    [propNames: string]: any;
 }
 
 export interface IState{

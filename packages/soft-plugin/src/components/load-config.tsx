@@ -17,8 +17,7 @@ export default (props: IProps) => {
   const [succeed, setSucceed] = useState<boolean>(false)
   const [loaded, setLoaded] = useState<boolean>(false)
   const titleCSS = ['text-sm', 'font-semibold']
-  const textCSS = ['text-lg','text-red-500', 'ml-2', 'font-light']
-  const buttonCSS = ['font-4xl']
+  const textCSS = ['text-sm','text-red-500', 'ml-2', 'font-light', 'mt-1']
 
   function loadConfig({file}:any){
     console.log(file, 'data')
