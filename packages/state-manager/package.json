@@ -6,6 +6,7 @@
   "homepage": "https://github.com/wangziling100/React-Components#readme",
   "main": "./dist/bundle.js",
   "module": "./src/index.js",
+  "types": "./src/index.d.ts",
   "license": "MIT",
   "directories": {
     "lib": "lib",
