@@ -11,6 +11,7 @@
   "directories": {
     "lib": "lib",
     "test": "./src/test"
+
   },
   "files": [
     "src"
