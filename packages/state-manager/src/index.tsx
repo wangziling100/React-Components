@@ -7,7 +7,7 @@ export let stateManager = new StateManager()
 export default function ManageState(props:any){
     const [state, setState] = useState()
     stateManager.setUpdateFunction(setState)
-    const myProvider:any = createContext(stateManager)
+    const myProvider:any = createContext('')
     return(
         <myProvider.Provider >
             {props.children}
