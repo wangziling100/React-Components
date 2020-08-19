@@ -61,7 +61,14 @@ module.exports = {
         'style-loader',
         MiniCssExtractPlugin.loader,
         { loader: 'css-loader', options: { importLoaders: 1 } },
-        'postcss-loader',
+        {
+          loader: 'postcss-loader',
+          options:{
+            config:{
+              path: path.join(__dirname,'postcss.config.js')
+            }
+          }
+        }
       ]
       
     },

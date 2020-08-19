@@ -2793,10 +2793,10 @@
     react-scripts "3.4.3"
     typescript "~3.9.7"
 
-"@wangziling100/state-manager@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@wangziling100/state-manager/-/state-manager-0.1.4.tgz#ca877dbf49d6d3b9aeac317b0c5dd77b4d9fb227"
-  integrity sha512-FvoMTStCKkcHDyXT6sKYtfjgPDssrG/Owzc0NFub2zsK01GooALrih82TWcV44U6yjgXJFcIqJiKubqrKamF5A==
+"@wangziling100/state-manager@^0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@wangziling100/state-manager/-/state-manager-0.1.11.tgz#bdd473b854be8fbc14fe40486b2edf4e2401f8a0"
+  integrity sha512-Oq3FMbMZjO2w4Rh77t2HTc+b4z5PxYsTmble/2AarZqNdLK4I7AKacgxJAp2uuyFcQo31ccxagHh6sRNiXWGVw==
   dependencies:
     "@types/node" "^14.0.27"
     "@types/react" "^16.9.0"
