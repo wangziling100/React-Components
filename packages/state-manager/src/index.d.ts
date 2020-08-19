@@ -1,5 +1,4 @@
 import { IStore } from './lib/tools'
-export default ManageState
 declare const ManageState: React.FC<any>
 declare class StateManager{
     constructor(store:IStore|void);
@@ -14,4 +13,5 @@ declare class StateManager{
 declare let stateManager: StateManager;
 
 export {StateManager, stateManager};
+export default ManageState;
 
