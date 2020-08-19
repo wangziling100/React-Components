@@ -11,6 +11,7 @@ declare class StateManager{
     getFunction(id:string, key:string):any;
     getState(id:string, key:string):void;
 }
+declare let stateManager: StateManager;
 
-export {StateManager};
+export {StateManager, stateManager};
 
