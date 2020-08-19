@@ -14,8 +14,8 @@
   },
   "files": [
     "src/*d.ts",
-    "dist/*.js",
-    "src/lib"
+    "src/lib",
+    "dist"
   ],
   "publishConfig": {
     "access": "public"
