@@ -4,8 +4,8 @@
   "description": "> TODO: description",
   "author": "wangziling100 <wangziling1000@gmail.com>",
   "homepage": "https://github.com/wangziling100/React-Components#readme",
-  "main": "./dist/bundle.js",
-  "module": "./src/index.js",
+  "main": "./dist/index.js",
+  "module": "./src/index.tsx",
   "types": "./src/index.d.ts",
   "license": "MIT",
   "directories": {
@@ -13,8 +13,8 @@
     "test": "./src/test"
   },
   "files": [
-    "src/*.ts",
-    "src/*.tsx",
+    "src/*d.ts",
+    "dist/*.js",
     "src/lib"
   ],
   "publishConfig": {

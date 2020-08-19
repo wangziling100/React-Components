@@ -21,7 +21,7 @@ module.exports = {
   // and output it into /dist as bundle.js
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js',
+    filename: 'index.js',
     //library: '@wangziling100/state-manager',
     publicPath: '/'
   },
