@@ -10,7 +10,7 @@ interface IAllState{
 interface IAllFunction{
     [propName: string]: IFunctions;
 }
-interface IStore{
+export interface IStore{
     state: IAllState; 
     function: IAllFunction; 
 }
