@@ -1,16 +1,18 @@
 import { storiesOf } from "@storybook/react";
 import * as React from 'react';
-import StateManager from '../index'
-import Test from '../components/test'
-import TestButton from '../components/test-button'
+import ManageState from '../index'
+import Test from './test'
+import TestButton from './test-button'
 storiesOf("state manager", module)
     .add("default",
         () => {
             return(
-                <StateManager>
+                <>
+                  <ManageState>
                     <TestButton/>
                     <Test/>
-                </StateManager>
+                  </ManageState>
+                </>
             )
         }
     )

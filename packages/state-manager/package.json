@@ -1,6 +1,6 @@
 {
   "name": "@wangziling100/state-manager",
-  "version": "0.1.4",
+  "version": "0.1.11",
   "description": "> TODO: description",
   "author": "wangziling100 <wangziling1000@gmail.com>",
   "homepage": "https://github.com/wangziling100/React-Components#readme",
@@ -13,8 +13,9 @@
     "test": "./src/test"
   },
   "files": [
-    "lib",
-    "src"
+    "src/*.ts",
+    "src/*.tsx",
+    "src/lib"
   ],
   "publishConfig": {
     "access": "public"
