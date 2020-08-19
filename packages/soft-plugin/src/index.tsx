@@ -5,10 +5,11 @@ import { Divider, Drawer, Collapse } from 'antd';
 import 'antd/dist/antd.css';
 import LoadConfig from './components/load-config'
 import { IConfig } from './types'
-import ManageState, {StateManager} from '@wangziling100/state-manager'
+import ManageState, { stateManager } from '@wangziling100/state-manager'
 
 interface IProps {
     data: Object 
+
 }
 
 export default (props: IProps) => {
@@ -34,29 +35,29 @@ export default (props: IProps) => {
             onClick={showDrawer}>
         Plugin
       </div>
-      <Drawer
-        title="Plugin System"
-        placement="right"
-        closable={false}
-        onClose={onClose}
-        visible={visible}
-      >
-        <Divider> Control Panel </Divider>
-        <LoadConfig setConfig={setLoadConfig} />
-        <Divider> Plugin List </Divider>
-        <Collapse accordion>
-          <Panel header="This is panel header 1" key="1">
-            <p>text1</p>
-          </Panel>
-          <Panel header="This is panel header 2" key="2">
-            <p>text2</p>
-          </Panel>
-          <Panel header="This is panel header 3" key="3">
-            <p>text3</p>
-          </Panel>
-        </Collapse>
-
-      </Drawer>
+      <ManageState>
+        <Drawer
+          title="Plugin System"
+          placement="right"
+          closable={false}
+          onClose={onClose}
+          visible={visible}
+        >
+          <LoadConfig setConfig={setLoadConfig} />
+          <Divider> Plugin List </Divider>
+          <Collapse accordion>
+            <Panel header="This is panel header 1" key="1">
+              <p>text1</p>
+            </Panel>
+            <Panel header="This is panel header 2" key="2">
+              <p>text2</p>
+            </Panel>
+            <Panel header="This is panel header 3" key="3">
+              <p>text3</p>
+            </Panel>
+          </Collapse>
+        </Drawer>
+      </ManageState>
     </>
   )
     //return <button style={{color}} className="w-1 p-1" >Color Button</button>

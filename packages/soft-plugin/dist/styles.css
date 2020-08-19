@@ -32,12 +32,6 @@
  * 2. Show the overflow in Edge and IE.
  */
 
-hr {
-  box-sizing: content-box; /* 1 */
-  height: 0; /* 1 */
-  overflow: visible; /* 2 */
-}
-
 /**
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
@@ -92,7 +86,8 @@ a {
  * 2. Remove the margin in Firefox and Safari.
  */
 
-button {
+button,
+input {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
@@ -104,7 +99,8 @@ button {
  * 1. Show the overflow in Edge.
  */
 
-button { /* 1 */
+button,
+input { /* 1 */
   overflow: visible;
 }
 
@@ -206,6 +202,10 @@ button:-moz-focusring {
  * Add the correct display in IE 10.
  */
 
+[hidden] {
+  display: none;
+}
+
 /**
  * Manually forked from SUIT CSS Base: https://github.com/suitcss/base
  * A thin layer on top of normalize.css that provides a starting point more
@@ -217,7 +217,7 @@ button:-moz-focusring {
  */
 
 
-hr {
+p {
   margin: 0;
 }
 
@@ -286,10 +286,6 @@ button:focus {
  * Ensure horizontal rules are visible by default
  */
 
-hr {
-  border-top-width: 1px;
-}
-
 /**
  * Undo the `border-style: none` reset that Normalize applies to images so that
  * our `border-{width}` utilities have the expected effect.
@@ -299,6 +295,10 @@ hr {
  *
  * https://github.com/tailwindcss/tailwindcss/issues/362
  */
+
+input::placeholder {
+  color: #a0aec0;
+}
 
 button {
   cursor: pointer;
@@ -322,7 +322,8 @@ a {
  * normalize.css.
  */
 
-button {
+button,
+input {
   padding: 0;
   line-height: inherit;
   color: inherit;
@@ -350,12 +351,124 @@ button {
  * https://github.com/mozdevs/cssremedy/issues/14
  */
 
+.bg-blue-300 {
+  --bg-opacity: 1;
+  background-color: #90cdf4;
+  background-color: rgba(144, 205, 244, var(--bg-opacity));
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mr-1 {
+  margin-right: 0.25rem;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.ml-2 {
+  margin-left: 0.5rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
+}
+
 .p-1 {
   padding: 0.25rem;
 }
 
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-red-500 {
+  --text-opacity: 1;
+  color: #f56565;
+  color: rgba(245, 101, 101, var(--text-opacity));
+}
+
+.text-indigo-700 {
+  --text-opacity: 1;
+  color: #4c51bf;
+  color: rgba(76, 81, 191, var(--text-opacity));
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.break-all {
+  word-break: break-all;
+}
+
 .w-1 {
   width: 0.25rem;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.w-64 {
+  width: 16rem;
 }
 
 @keyframes spin {
@@ -399,5 +512,1586 @@ button {
   50% {
     transform: translateY(0);
     animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+/*!
+ * 
+ * antd v4.5.4
+ * 
+ * Copyright 2015-present, Alipay, Inc.
+ * All rights reserved.
+ *       
+ */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-no-unknown */
+
+input::-ms-clear,
+input::-ms-reveal {
+  display: none;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+a {
+  color: #1890ff;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: #40a9ff;
+}
+
+a:active {
+  color: #096dd9;
+}
+
+a:active,
+a:hover {
+  text-decoration: none;
+  outline: 0;
+}
+
+a:focus {
+  text-decoration: none;
+  outline: 0;
+}
+
+a,
+button,
+input:not([type='range']) {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+input,
+button {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button {
+  text-transform: none;
+}
+
+button {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+::selection {
+  color: #fff;
+  background: #1890ff;
+}
+
+@keyframes antFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes antFadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes antMoveDownIn {
+  0% {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 1;
+  }
+}
+
+@keyframes antMoveDownOut {
+  0% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 0;
+  }
+}
+
+@keyframes antMoveLeftIn {
+  0% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 1;
+  }
+}
+
+@keyframes antMoveLeftOut {
+  0% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 0;
+  }
+}
+
+@keyframes antMoveRightIn {
+  0% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 1;
+  }
+}
+
+@keyframes antMoveRightOut {
+  0% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 0;
+  }
+}
+
+@keyframes antMoveUpIn {
+  0% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 1;
+  }
+}
+
+@keyframes antMoveUpOut {
+  0% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    opacity: 0;
+  }
+}
+
+@keyframes loadingCircle {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes waveEffect {
+  100% {
+    -webkit-box-shadow: 0 0 0 #1890ff;
+    box-shadow: 0 0 0 #1890ff;
+    -webkit-box-shadow: 0 0 0 6px var(--antd-wave-shadow-color);
+    box-shadow: 0 0 0 6px var(--antd-wave-shadow-color);
+  }
+}
+
+@keyframes fadeEffect {
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes antSlideUpIn {
+  0% {
+    -webkit-transform: scaleY(0.8);
+    transform: scaleY(0.8);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes antSlideUpOut {
+  0% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scaleY(0.8);
+    transform: scaleY(0.8);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes antSlideDownIn {
+  0% {
+    -webkit-transform: scaleY(0.8);
+    transform: scaleY(0.8);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes antSlideDownOut {
+  0% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scaleY(0.8);
+    transform: scaleY(0.8);
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes antSlideLeftIn {
+  0% {
+    -webkit-transform: scaleX(0.8);
+    transform: scaleX(0.8);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes antSlideLeftOut {
+  0% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scaleX(0.8);
+    transform: scaleX(0.8);
+    -webkit-transform-origin: 0% 0%;
+    transform-origin: 0% 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes antSlideRightIn {
+  0% {
+    -webkit-transform: scaleX(0.8);
+    transform: scaleX(0.8);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+}
+
+@keyframes antSlideRightOut {
+  0% {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scaleX(0.8);
+    transform: scaleX(0.8);
+    -webkit-transform-origin: 100% 0%;
+    transform-origin: 100% 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes antZoomIn {
+  0% {
+    -webkit-transform: scale(0.2);
+    transform: scale(0.2);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes antZoomOut {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  100% {
+    -webkit-transform: scale(0.2);
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}
+
+@keyframes antZoomBigIn {
+  0% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes antZoomBigOut {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  100% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes antZoomUpIn {
+  0% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+  }
+}
+
+@keyframes antZoomUpOut {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+  }
+
+  100% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes antZoomLeftIn {
+  0% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+  }
+}
+
+@keyframes antZoomLeftOut {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+  }
+
+  100% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+    opacity: 0;
+  }
+}
+
+@keyframes antZoomRightIn {
+  0% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+  }
+}
+
+@keyframes antZoomRightOut {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+  }
+
+  100% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+    opacity: 0;
+  }
+}
+
+@keyframes antZoomDownIn {
+  0% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+  }
+}
+
+@keyframes antZoomDownOut {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+  }
+
+  100% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    opacity: 0;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/**
+ * Do not merge `height` & `line-height` under style with `selection` & `search`,
+ * since chrome may update to redesign with its align logic.
+ */
+
+/* Reset search input style */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes antStatusProcessing {
+  0% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: scale(2.4);
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes antZoomBadgeIn {
+  0% {
+    -webkit-transform: scale(0) translate(50%, -50%);
+    transform: scale(0) translate(50%, -50%);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scale(1) translate(50%, -50%);
+    transform: scale(1) translate(50%, -50%);
+  }
+}
+
+@keyframes antZoomBadgeOut {
+  0% {
+    -webkit-transform: scale(1) translate(50%, -50%);
+    transform: scale(1) translate(50%, -50%);
+  }
+
+  100% {
+    -webkit-transform: scale(0) translate(50%, -50%);
+    transform: scale(0) translate(50%, -50%);
+    opacity: 0;
+  }
+}
+
+@keyframes antZoomBadgeInRtl {
+  0% {
+    -webkit-transform: scale(0) translate(-50%, -50%);
+    transform: scale(0) translate(-50%, -50%);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: scale(1) translate(-50%, -50%);
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+
+@keyframes antZoomBadgeOutRtl {
+  0% {
+    -webkit-transform: scale(1) translate(-50%, -50%);
+    transform: scale(1) translate(-50%, -50%);
+  }
+
+  100% {
+    -webkit-transform: scale(0) translate(-50%, -50%);
+    transform: scale(0) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes antRadioEffect {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable-next-line */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes card-loading {
+  0%,
+  100% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes antCheckboxEffect {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes antdDrawerFadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes antShowHelpIn {
+  0% {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    opacity: 0;
+  }
+
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes antShowHelpOut {
+  to {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    opacity: 0;
+  }
+}
+
+@keyframes antShowHelpOut {
+  to {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+    opacity: 0;
+  }
+}
+
+@keyframes diffZoomIn1 {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes diffZoomIn2 {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes diffZoomIn3 {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* IE10+ */
+}
+
+@-webkit-keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes antSpinMove {
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes antRotate {
+  to {
+    -webkit-transform: rotate(405deg);
+    transform: rotate(405deg);
+  }
+}
+
+@keyframes antRotate {
+  to {
+    -webkit-transform: rotate(405deg);
+    transform: rotate(405deg);
+  }
+}
+
+@-webkit-keyframes antRotateRtl {
+  to {
+    -webkit-transform: rotate(-405deg);
+    transform: rotate(-405deg);
+  }
+}
+
+@keyframes antRotateRtl {
+  to {
+    -webkit-transform: rotate(-405deg);
+    transform: rotate(-405deg);
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes MessageMoveOut {
+  0% {
+    max-height: 150px;
+    padding: 8px;
+    opacity: 1;
+  }
+
+  100% {
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes NotificationFadeIn {
+  0% {
+    left: 384px;
+    opacity: 0;
+  }
+
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes NotificationLeftFadeIn {
+  0% {
+    right: 384px;
+    opacity: 0;
+  }
+
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes NotificationFadeOut {
+  0% {
+    max-height: 150px;
+    margin-bottom: 16px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    opacity: 1;
+  }
+
+  100% {
+    max-height: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: 0;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes ant-progress-active {
+  0% {
+    width: 0;
+    opacity: 0.1;
+  }
+
+  20% {
+    width: 0;
+    opacity: 0.5;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes ant-skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes ant-skeleton-loading-rtl {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes antCheckboxEffect {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes antCheckboxEffect {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@keyframes antCheckboxEffect {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0.5;
+  }
+
+  100% {
+    -webkit-transform: scale(1.6);
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
+
+/* stylelint-disable no-duplicate-selectors */
+
+/* stylelint-disable */
+
+/* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
+
+@-webkit-keyframes uploadAnimateIn {
+  from {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes uploadAnimateIn {
+  from {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes uploadAnimateOut {
+  to {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes uploadAnimateOut {
+  to {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes uploadAnimateInlineIn {
+  from {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes uploadAnimateInlineIn {
+  from {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes uploadAnimateInlineOut {
+  to {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes uploadAnimateInlineOut {
+  to {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
   }
 }

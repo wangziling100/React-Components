@@ -9,7 +9,7 @@ import cn from 'classnames'
 import { IConfig } from '../types'
 
 interface IProps {
-  setConfig: React.Dispatch<React.SetStateAction<IConfig>>;
+  setConfig: React.Dispatch<React.SetStateAction<IConfig|undefined>>;
 }
 export default (props: IProps) => {
   //console.log(props, 'props')

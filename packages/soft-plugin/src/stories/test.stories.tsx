@@ -1,17 +1,16 @@
 import { storiesOf } from "@storybook/react";
 import '../css/tailwind.css'
-import Plugin from '../index';
 import * as React from 'react';
-storiesOf("Plugin", module)
+import Test from '../components/test-provider'
+
+storiesOf("Test", module)
     .add("default",
         () => {
           return(
-              <div className='w-64'>
-                <Plugin />
-              </div>
+              <>
+                <Test/>
+              </>
           )
         }
 
     )
-    
-    
