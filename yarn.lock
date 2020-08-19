@@ -2769,19 +2769,6 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@wangziling100/state-manager@^0.1.4":
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/@wangziling100/state-manager/-/state-manager-0.1.4.tgz#ca877dbf49d6d3b9aeac317b0c5dd77b4d9fb227"
-  integrity sha512-FvoMTStCKkcHDyXT6sKYtfjgPDssrG/Owzc0NFub2zsK01GooALrih82TWcV44U6yjgXJFcIqJiKubqrKamF5A==
-  dependencies:
-    "@types/node" "^14.0.27"
-    "@types/react" "^16.9.0"
-    "@types/react-dom" "^16.9.0"
-    react "^16.13.1"
-    react-dom "^16.13.1"
-    react-scripts "3.4.3"
-    typescript "~3.9.7"
-
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
