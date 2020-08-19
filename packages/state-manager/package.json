@@ -13,6 +13,7 @@
     "test": "./src/test"
   },
   "files": [
+    "src/*d.ts",
     "dist"
   ],
   "publishConfig": {

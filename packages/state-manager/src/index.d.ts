@@ -1,5 +1,5 @@
 import { IStore } from './lib/tools'
-declare const ManageState: React.FC<any>
+declare function ManageState(props:any):JSX.Element;
 declare class StateManager{
     constructor(store:IStore|void);
     getStore():IStore;
