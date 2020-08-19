@@ -1,4 +1,5 @@
-**/src/test
-**/src/components
-**/src/css
-**/src/sotries
+src/test
+src/components
+src/css
+src/sotries
+src/coverage
