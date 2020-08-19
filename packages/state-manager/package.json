@@ -13,9 +13,7 @@
     "test": "./src/test"
   },
   "files": [
-    "./src/lib",
-    "./src/index.tsx",
-    "./src/index.d.ts"
+    "src"
   ],
   "publishConfig": {
     "access": "public"
