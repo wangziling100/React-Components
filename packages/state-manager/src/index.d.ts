@@ -1,6 +1,6 @@
 import { IStore } from './lib/tools'
 export default ManageState
-declare function ManageState(props:any): any
+declare const ManageState: React.FC<any>
 declare class StateManager{
     constructor(store:IStore|void);
     getStore():IStore;
