@@ -2774,6 +2774,25 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
+"@wangziling100/state-manager@^0.1.0", "@wangziling100/state-manager@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@wangziling100/state-manager/-/state-manager-0.1.1.tgz#6df176121abdd4d41271396d36ceb8df547879b1"
+  integrity sha512-u1g/1svVaF6/ZnAibklPYKw/DOp/S9ovns4tNzHhbbYGJ+oDK79onevcsUX//x0SHwbRs2wWHaAyXqra3+qn3A==
+  dependencies:
+    "@testing-library/jest-dom" "^5.11.3"
+    "@testing-library/react" "^10.4.8"
+    "@testing-library/user-event" "^12.1.1"
+    "@types/jest" "^26.0.9"
+    "@types/node" "^14.0.27"
+    "@types/react" "^16.9.0"
+    "@types/react-dom" "^16.9.0"
+    antd "^4.5.2"
+    postcss-nested-ancestors "^2.0.0"
+    react "^16.13.1"
+    react-dom "^16.13.1"
+    react-scripts "3.4.3"
+    typescript "~3.9.7"
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
