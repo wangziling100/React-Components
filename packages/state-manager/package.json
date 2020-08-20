@@ -18,6 +18,7 @@
     "src/lib/*d.ts",
     "src/lib/*d.ts.map",
     "dist/*"
+
   ],
   "publishConfig": {
     "access": "public"
