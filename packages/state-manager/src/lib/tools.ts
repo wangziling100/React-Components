@@ -25,7 +25,7 @@ export class StateManager {
             }
         }
         else{
-            this.store = store
+            this.store = store as IStore
         }
         
     }
