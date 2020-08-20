@@ -3,6 +3,7 @@
         "yarn install",
         "yarn lint",
         "yarn test",
+        "yarn tsc --declaration --outDir dist --emitDeclarationOnly --declarationMap",
         "yarn build"
     ]
 }
