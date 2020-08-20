@@ -4,7 +4,7 @@ import { StateManager } from './lib/tools'
 
 export let stateManager = new StateManager()
 
-function ManageState(props:any){
+export function ManageState(props:any){
     const [state, setState] = useState()
     stateManager.setUpdateFunction(setState)
     const myProvider:any = createContext('')
@@ -14,4 +14,4 @@ function ManageState(props:any){
         </myProvider.Provider>
     )
 }
-export default ManageState
+//export default ManageState
