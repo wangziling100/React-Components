@@ -1,6 +1,6 @@
 {
   "name": "@wangziling100/state-manager",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "description": "> TODO: description",
   "author": "wangziling100 <wangziling1000@gmail.com>",
   "homepage": "https://github.com/wangziling100/React-Components#readme",
@@ -53,9 +53,7 @@
   "bugs": {
     "url": "https://github.com/wangziling100/React-Components/issues"
   },
-  "dependencies": {
-    
-  },
+  "dependencies": {},
   "eslintConfig": {
     "extends": "react-app"
   },
