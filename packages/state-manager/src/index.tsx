@@ -9,9 +9,11 @@ export function ManageState(props:any){
     stateManager.setUpdateFunction(setState)
     const myProvider:any = createContext('')
     return(
+        <>
         <myProvider.Provider >
             {props.children}
         </myProvider.Provider>
+        </>
     )
 }
 export default ManageState
