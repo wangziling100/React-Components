@@ -14,4 +14,4 @@ export function ManageState(props:any){
         </myProvider.Provider>
     )
 }
-//export default ManageState
+export default ManageState
