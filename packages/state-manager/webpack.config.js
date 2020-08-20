@@ -15,16 +15,17 @@ module.exports = {
     main: [
       //'./src/css/tailwind.css',
       //'./src/lib/tools',
-      './src/index'
+      './src/index.tsx'
     ]
   },
   // and output it into /dist as bundle.js
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'index.js',
-    //library: '@wangziling100/state-manager',
-    libraryTarget: 'commonjs',
-    publicPath: '/'
+    libraryTarget: 'umd',
+    library: 'StateManager',
+    publicPath: path.join(__dirname, '/dist'),
+    libraryExport: 'default'
   },
   optimization:{
     splitChunks: {
@@ -49,9 +50,9 @@ module.exports = {
   },
   externals:{
     // Use external version of React
-    //'react': 'React',
-    //'react-dom': 'ReactDOM',
-    //'react-router': 'ReactRouter'
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'react-router': 'ReactRouter'
   },
   module: {
     rules: [
@@ -59,9 +60,25 @@ module.exports = {
     {
       test: /\.(ts|js)x?$/,
       exclude: /node_modules/,
-      use: {
-        loader: 'babel-loader'
-      },
+      use: [
+        {
+          loader: 'babel-loader',
+          options:{
+            "presets": [
+              "@babel/preset-env",
+              "@babel/preset-typescript",
+              "@babel/preset-react"
+            ],
+            "plugins": [
+              "@babel/proposal-class-properties",
+              "@babel/proposal-object-rest-spread"
+            ]
+          }
+        },
+        {
+          loader:'ts-loader'
+        }
+      ],
     },
     // css-loader to bundle all the css files into one file and style-loader to add all the styles  inside the style tag of the document
     {

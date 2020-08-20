@@ -54,13 +54,7 @@
     "url": "https://github.com/wangziling100/React-Components/issues"
   },
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "typescript": "~3.9.7",
-    "classnames": "^2.2.6",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "react-scripts": "3.4.3"
+    
 
   },
   "eslintConfig": {
@@ -111,6 +105,13 @@
     "ts-jest": "^26.2.0",
     "ts-loader": "^8.0.2",
     "webpack": "^4.44.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "typescript": "~3.9.7",
+    "classnames": "^2.2.6",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "react-scripts": "3.4.3",
     "webpack-cli": "^3.3.12"
   },
   "peerDependencies": {}
