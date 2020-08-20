@@ -56,6 +56,10 @@
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "typescript": "~3.9.7",
+    "classnames": "^2.2.6",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
     "react-scripts": "3.4.3"
   },
   "eslintConfig": {
@@ -87,12 +91,9 @@
     "@types/jest": "^26.0.9",
     "@types/node": "^14.0.27",
     "@types/postcss-import": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
     "autoprefixer": "^9.8.6",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.1.0",
-    "classnames": "^2.2.6",
     "css-loader": "^4.2.1",
     "css-minimizer-webpack-plugin": "^1.1.0",
     "cssnano": "^4.1.10",
@@ -108,7 +109,6 @@
     "tailwindcss": "^1.6.2",
     "ts-jest": "^26.2.0",
     "ts-loader": "^8.0.2",
-    "typescript": "~3.9.7",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
