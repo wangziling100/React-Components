@@ -23,7 +23,7 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
     filename: 'index.js',
     //library: '@wangziling100/state-manager',
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs2',
     publicPath: '/'
   },
   optimization:{
