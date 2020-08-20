@@ -25,7 +25,7 @@ module.exports = {
     libraryTarget: 'umd',
     library: 'StateManager',
     publicPath: path.join(__dirname, '/dist'),
-    libraryExport: 'default'
+    //libraryExport: 'default'
   },
   optimization:{
     splitChunks: {
