@@ -54,9 +54,7 @@
     "url": "https://github.com/wangziling100/React-Components/issues"
   },
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3"
+    
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -112,5 +110,9 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3"
+  }
 }
