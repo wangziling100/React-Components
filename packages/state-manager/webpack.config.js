@@ -47,6 +47,10 @@ module.exports = {
       'node_modules'
     ]
   },
+  externals:{
+    // Use external version of React
+    "react": "React"
+  },
   module: {
     rules: [
       // we use babel-loader to load our jsx and tsx files
