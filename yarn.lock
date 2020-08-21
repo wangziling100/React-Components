@@ -2751,10 +2751,10 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@wangziling100/state-manager@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@wangziling100/state-manager/-/state-manager-0.2.3.tgz#eae10b7aa286152b11bc55a1e8eba396cb164819"
-  integrity sha512-hFI9IcO7Mr1SSPbPiSkHAkELWnHeIKQLWluYT0Rz9zui/YNUEDzixW/4NeVh1pWhH2Nux6/3kMDKW3PaK3AROw==
+"@wangziling100/state-manager@^0.1.4":
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/@wangziling100/state-manager/-/state-manager-0.1.18.tgz#b0a3eb42610612b9e2a2185d76e2a86f1ee1e546"
+  integrity sha512-4sEY1aMB+UhF5yKM3+be33h6xNwSk2OoAq8y4fa7G7SBzEZH0SgGTqIODQP3YgZiHg1noCkXTkAs+tSHTIT60g==
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
