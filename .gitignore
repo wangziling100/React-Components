@@ -3,3 +3,4 @@ packages/test-example*
 packages/input
 **/components/test*
 **/test.stories*
+**/coverage/*
