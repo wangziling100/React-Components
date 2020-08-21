@@ -201,7 +201,7 @@ export function writeLocal(tableName: string, table: IDict):boolean{
 export class StoreManager{
     private structure: IDict
     private tableName: string
-    constructor(tableName:string, structure:IDict){
+    constructor(tableName:string, structure:IDict={}){
         this.tableName = tableName
         this.structure = structure
     }
