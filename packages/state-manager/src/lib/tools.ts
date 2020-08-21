@@ -1,3 +1,9 @@
+import { useEffect } from 'react'
+
+
+interface IDict{
+    [propName: string]: any;
+}
 interface IStates{
     [propName: string]: any;
 }
@@ -17,6 +23,8 @@ export interface IStore{
 export class StateManager {
     private store:IStore;
     private updateFunction:any;
+    private storageKeys: IDict = {};
+    private sessionKeys: IDict = {};
     constructor(store: IStore|void){
         if (store===undefined){
             this.store = {
@@ -43,6 +51,50 @@ export class StateManager {
             this.store.function[id] = {}
         }
         this.store.function[id][key] = value
+    }
+
+    addTo(id:string, key:string|string[], where:'session'|'local'){
+        try{
+            let storeFunc: Storage
+            if (where==='session') storeFunc = sessionStorage
+            else if (where==='local') storeFunc = localStorage
+
+            if (id === 'ALL'){
+                const newKey = id+'_'+key
+                const store = this.store.state
+                this.sessionKeys['ALL'] = []
+            }
+            else if (key === 'ALL'){
+                const newKey = id+'_'+key
+                const store = this.store.state[id]
+                this.sessionKeys[id] = ['all']
+            }
+            else if (key instanceof Array){
+                let store:IDict = {}
+                for (let index in key){
+                    store[id] = key[index]
+                    const newKey = id+'_'+key[index]
+                    this.sessionKeys[newKey] = [id, key[index]]
+                }
+            }
+            else{
+                const newKey = id+'_'+key
+                const store = this.store.state[id][key]
+                this.sessionKeys[newKey] = [id, key]
+            }
+        }
+        catch (err){
+            console.log(err)
+        }
+        
+        
+    }
+    addToSession(id:string, key:string){
+        this.addTo(id, key, 'session')
+    }
+
+    addToStorage(id:string, key:string){
+        this.addTo(id, key, 'local')
     }
     setUpdateFunction(fn:any){
         this.updateFunction = fn
