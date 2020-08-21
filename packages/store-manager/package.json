@@ -1,6 +1,6 @@
 {
   "name": "@wangziling100/store-manager",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "> TODO: description",
   "author": "wangziling100 <wangziling1000@gmail.com>",
   "homepage": "https://github.com/wangziling100/React-Components#readme",
@@ -39,7 +39,9 @@
     "transform": {
       "^.+\\.(ts|tsx)$": "ts-jest"
     },
-    "setupFilesAfterEnv": ["./src/setupTests.js"]
+    "setupFilesAfterEnv": [
+      "./src/setupTests.js"
+    ]
   },
   "scripts": {
     "test": "jest src/test",
