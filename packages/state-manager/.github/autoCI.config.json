@@ -2,7 +2,8 @@
     "actions": [
         "yarn install",
         "yarn lint",
-        "yarn test",
+        "yarn workspace @wangziling100/state-manager remove @wangziling100/store-manager",
+        "yarn workspace @wangziling100/state-manager add @wangziling100/store-manager",
         "yarn tsc --declaration --emitDeclarationOnly --declarationMap",
         "yarn build"
     ]
