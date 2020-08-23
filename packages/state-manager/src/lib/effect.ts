@@ -10,7 +10,7 @@ export function useSession(id:string|string[], syncWrite=false, update=[]){
 
 }
 
-export function useStorage(id:string|string[], syncWrite=false, update=[]){
+export function useLocal(id:string|string[], syncWrite=false, update=[]){
     useEffect(()=>{
         if (syncWrite){
             stateManager.writeLocal(id)
