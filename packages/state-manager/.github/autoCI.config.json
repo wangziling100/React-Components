@@ -2,6 +2,7 @@
     "actions": [
         "yarn install",
         "yarn lint",
+        "yarn add @wangziling100/store-manager",
         "yarn tsc --declaration --emitDeclarationOnly --declarationMap",
         "yarn build"
     ]

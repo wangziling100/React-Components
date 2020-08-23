@@ -2,7 +2,12 @@
   "name": "@wangziling100/state-manager",
   "version": "0.4.0",
   "description": "A React based state management system, like Redux, but easier to use",
-  "keywords": ["react", "react component", "react state", "state manager"],
+  "keywords": [
+    "react",
+    "react component",
+    "react state",
+    "state manager"
+  ],
   "author": "Wang Xingbo <wangziling1000@gmail.com>",
   "homepage": "https://github.com/wangziling100/React-Components/blob/master/packages/state-manager",
   "main": "./dist/index.js",
