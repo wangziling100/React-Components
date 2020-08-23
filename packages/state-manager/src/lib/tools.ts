@@ -1,5 +1,5 @@
 import { StoreManager } from '@wangziling100/store-manager'
-import { IKey, IDict, IBD } from './types'
+import { IKey, IDict } from './types'
 
 interface IStates{
     [propName: string]: any;

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { stateManager } from '../index'
 export function useSession(id:string|string[], syncWrite=false, update=[]){
     useEffect(()=>{
@@ -6,7 +6,7 @@ export function useSession(id:string|string[], syncWrite=false, update=[]){
             stateManager.writeSession(id)
         }
         stateManager.loadSession(id)
-    }, update)
+    }, [id, syncWrite, ...update])
 
 }
 
@@ -16,5 +16,5 @@ export function useStorage(id:string|string[], syncWrite=false, update=[]){
             stateManager.writeLocal(id)
         }
         stateManager.loadLocal(id)
-    }, update)
+    }, [id, syncWrite, ...update])
 }
