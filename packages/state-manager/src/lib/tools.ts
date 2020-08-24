@@ -144,7 +144,6 @@ export class StateManager {
 
     writeStorage(storage:string, id:IKey=null):boolean{
         try{
-            console.log('write storage')
             let storeKeys: IDict
             let store: IDict = {}
             if (storage==='session') storeKeys = this.sessionKeys
@@ -311,25 +310,20 @@ export class StateManager {
                 || functions[key]===undefined
                 || functions[key]===null){
                     if(this.store.function[id][key]!==undefined){
-                        console.log(1)
                         const func = this.store.function[id][key]
                         const value = newData[key]
                         func(value)
                     }
                     else if(this.store.function[id]['set'+this.firstUpperCase(key)]!==undefined){
-                        console.log(2)
                         const func = this.store.function[id]['set'+this.firstUpperCase(key)]
                         const value = newData[key]
                         func(value)
                     }
                 }
                 else{
-                    console.log(3)
                     const funcName = functions[key]
-                    console.log(funcName, 'function name')
                     const func = this.store.function[id][funcName]
                     const value = newData[key]
-                    console.log(func, value, 'set hello value')
                     func(value)
                 }
             }
