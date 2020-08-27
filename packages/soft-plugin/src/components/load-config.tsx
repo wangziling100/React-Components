@@ -7,13 +7,17 @@ import { useState } from 'react'
 import * as io from '../lib/io'
 import cn from 'classnames'
 import { IConfig } from '../types'
+import { stateManager } from '@wangziling100/state-manager'
+import { IDict } from '@wangziling100/state-manager/src/lib/types';
 
 interface IProps {
   setConfig: React.Dispatch<React.SetStateAction<IConfig|undefined>>;
+  onLoaded: Function;
 }
 export default (props: IProps) => {
   //console.log(props, 'props')
 
+  const onLoaded= props.onLoaded
   const [succeed, setSucceed] = useState<boolean>(false)
   const [loaded, setLoaded] = useState<boolean>(false)
   const titleCSS = ['text-sm', 'font-semibold']
@@ -26,12 +30,23 @@ export default (props: IProps) => {
     reader.onload = function(){
       console.log(this.result)
       const config: IConfig|null = io.readConfig(this.result as string)
+      console.log(config, 'config')
+
       if (config!==null) {
         console.log(config)
         setSucceed(true)
+        let configs = stateManager.getState('index', 'configs')
+        const name = config.name
+        const storedConfig: IDict = {}
+        storedConfig[name] = config
+        configs = Object.assign(configs, )
+        const setConfigs = stateManager.getFunction('index', 'setConfigs')
+        setConfigs(Object.assign(configs, storedConfig))
+        stateManager.writeLocal('index')
         if (props!==undefined){
           props.setConfig(config)
         }
+        onLoaded()
       }
       else {
         setSucceed(false)

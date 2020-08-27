@@ -1,6 +1,23 @@
-line:
+name: test1
+lines:
   1:
+    - props:
+        css: ['flex', 'justify-between']
     - input:
-        param1: abc
-        param2: bcd
-    - input: defualt
+        name: name
+        save: true
+        css: ['w-32']
+        placeholder: Name
+    - label:
+        css: ['text-blue-500']
+        content: 'Name'
+  2:
+    - props:
+        css: ['mt-2', 'flex', 'justify-between']
+    - input: 
+        name: email
+        css: ['w-32']
+        placeholder: Email
+    - label:
+        css: ['text-blue-500']
+        content: 'Email'

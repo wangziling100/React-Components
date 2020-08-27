@@ -6,6 +6,6 @@ export interface IStorageObj {
         configDir: string;
         [propName: string]: Object;
 }
-interface IConfigs {
+export interface IConfigs {
     [propName: string]: IConfig
 }

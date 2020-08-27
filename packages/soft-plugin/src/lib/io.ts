@@ -1,7 +1,7 @@
 import { storageName, IStorageObj } from './types'
 import { IConfig } from '../types'
 import * as yaml from 'js-yaml'
-import * as fs from 'fs'
+/*
 export function checkStorage():boolean{
     try{
         let storage: string|null = localStorage.getItem(storageName)
@@ -61,14 +61,23 @@ export function addConfig(name:string, config: IConfig):boolean{
     storage.configs[name] = config
     return writeStorage(storage)
 }
+*/
 
 export function readConfig(yamlFile:string): IConfig|null{
     try{
         const doc = yaml.safeLoad(yamlFile);
-        return doc as IConfig
+        return objToConfig(doc)
     }
     catch(err){
         console.log(err)
         return null
     }
+}
+
+function objToConfig(obj:any){
+    const ret:IConfig = {
+        name: obj.name,
+        lines: obj.lines
+    }
+    return ret
 }

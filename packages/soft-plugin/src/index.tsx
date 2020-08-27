@@ -5,20 +5,26 @@ import { Divider, Drawer, Collapse } from 'antd';
 import 'antd/dist/antd.css';
 import LoadConfig from './components/load-config'
 import { IConfig } from './types'
-import ManageState, { stateManager } from '@wangziling100/state-manager'
+import { stateManager, useLocal } from '@wangziling100/state-manager'
+import PluginList from './components/plugin-list';
+import { IDict } from './types';
 
 interface IProps {
     data: Object 
-
+    drawerProps: IDict
 }
+
 
 export default (props: IProps) => {
   // States
   const [ loadConfig, setLoadConfig ] = useState<IConfig>()
   const [visible, setVisible] = useState(false)
+  const [ configs, setConfigs ] = useState({})
   // Variables
+  const id = 'index'
   const data = props.data
   const { Panel } = Collapse;
+  const drawerProps = props.drawerProps || {width:420}
   // Functions
   const showDrawer = () => {
       setVisible(true)
@@ -26,6 +32,21 @@ export default (props: IProps) => {
   const onClose = () => {
       setVisible(false)
   }
+  const onConfigLoaded = () => {
+    stateManager.writeLocal(id)
+  }
+  // Init
+  stateManager.addState(id, 'loadConfig', loadConfig)
+  stateManager.addFunction(id, 'setLoadConfig', setLoadConfig)
+  stateManager.addState(id, 'configs', configs)
+  stateManager.addFunction(id, 'setConfigs', setConfigs)
+  stateManager.addToLocalSet(id, 'configs')
+  // Effect
+  useLocal('index')
+  // Components
+  const tmp = []
+  tmp.push(<div> test here </div>)
+
   return (
     <>
       <div  className='fixed right-0 mt-20 px-2 w-6 py-2
@@ -35,30 +56,18 @@ export default (props: IProps) => {
             onClick={showDrawer}>
         Plugin
       </div>
-      <ManageState>
-        <Drawer
-          title="Plugin System"
-          placement="right"
-          closable={false}
-          onClose={onClose}
-          visible={visible}
-        >
-          <LoadConfig setConfig={setLoadConfig} />
-          <Divider> Plugin List </Divider>
-          <Collapse accordion>
-            <Panel header="This is panel header 1" key="1">
-              <p>text1</p>
-            </Panel>
-            <Panel header="This is panel header 2" key="2">
-              <p>text2</p>
-            </Panel>
-            <Panel header="This is panel header 3" key="3">
-              <p>text3</p>
-            </Panel>
-          </Collapse>
-        </Drawer>
-      </ManageState>
+      <Drawer
+        title="Plugin System"
+        placement="right"
+        closable={false}
+        onClose={onClose}
+        visible={visible}
+        {...drawerProps}
+      >
+        <LoadConfig setConfig={setLoadConfig} onLoaded={onConfigLoaded}/>
+        <Divider> Plugin List </Divider>
+        <PluginList data={configs}/>
+      </Drawer>
     </>
   )
-    //return <button style={{color}} className="w-1 p-1" >Color Button</button>
 }

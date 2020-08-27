@@ -1,9 +1,38 @@
-import { IConfig } from "../types";
+import {IDict} from '../types'
 import * as React from 'react'
+import '../css/tailwind.css'
+import cn from 'classnames'
+import { dataMapComponent, copy } from '../lib/tools'
+import BaseCom from './base-com'
 
-export default (props:IConfig) => {
+interface IProps{
+    data: IDict[]
+    css: [] | null
+    filed: string
+}
+
+export default (props:IDict) => {
+    //console.log(props, 'line props')
+    const childProps = copy(props)
+    const data = props.data
+    const css = props.css || []
+    //console.log('line css', css, props)
+    const field = props.field
+    const components = []
+    let key = 0
+    for (let el of data){
+        const component = dataMapComponent(el, field, key)
+        components.push(component)
+        key++
+    }
+    childProps['type'] = 'line'
+    //console.log(childProps, 'line child props')
+    //const main = BaseCom(childProps)
+
+    //<div className={cn(...css)}>
     return(
-        <>
-        </>
+        <BaseCom {...childProps}>
+            {components}
+        </BaseCom>
     )
 }

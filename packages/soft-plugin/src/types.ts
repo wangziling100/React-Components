@@ -1,5 +1,10 @@
+export interface IDict {
+    [propNames: string]: any
+}
+
 export interface IConfig{
-    config: Object;
+    name: string;
+    lines: IDict;
     [propNames: string]: any;
 }
 
