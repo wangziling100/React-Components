@@ -26,6 +26,9 @@ export interface IStore{
     function: IAllFunction; 
 }
 
+function sleep(ms:number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 export class StateManager {
     private store:IStore;
@@ -361,6 +364,23 @@ export class StateManager {
         return this.store.function[id][key]
     }
 
+    async getFunctionAsync(id:string, key:string, limit:number=500){
+        const start = new Date().getMilliseconds()
+        while(true){
+            const curr = new Date().getMilliseconds()
+            const diff = curr-start
+            //console.log(diff)
+            if(diff>limit) break
+
+            if(this.store.function[id]!==undefined
+            && this.store.function[id][key]!==undefined){
+                return this.store.function[id][key]
+            }
+            await sleep(10)
+        }
+        return null
+    }
+
     getState(id:string, key:string){
         if(this.store.state[id]===undefined 
         || this.store.state[id][key]===undefined){
@@ -368,6 +388,24 @@ export class StateManager {
         }
         return this.store.state[id][key]
     }
+
+    async getStateAsync(id:string, key:string, limit:number=500){
+        const start = new Date().getMilliseconds()
+        while(true){
+            const curr = new Date().getMilliseconds()
+            const diff = curr-start
+            //console.log(diff)
+            if(diff>limit) break
+
+            if(this.store.state[id]!==undefined
+            && this.store.state[id][key]!==undefined){
+                return this.store.state[id][key]
+            }
+            await sleep(10)
+        }
+        return null
+    }
+
     getManager(id:string){
         if (this.storeManagers[id]===undefined){
             this.storeManagers[id] = new StoreManager(id)
