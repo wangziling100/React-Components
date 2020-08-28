@@ -3,11 +3,14 @@ import { copy, strToBoolean } from '../lib/tools'
 import base from './base'
 import { IDict } from '../types'
 import cn from 'classnames'
-import { stateManager } from '@wangziling100/state-manager'
+import Line from './line'
 
 export default (props: IDict) => {
     // Variables
     const childProps = copy(props)
+    childProps['type'] = 'modal'
+    return <Line {...childProps} />
+    /*
     const css = props.css || []
     const id = props.field
     const name = props.name
@@ -25,7 +28,6 @@ export default (props: IDict) => {
         </div>
     )
  
-    console.log(data, 'input')
 
     //{visible && main}
     return(
@@ -33,4 +35,5 @@ export default (props: IDict) => {
           {main}
         </> 
     )
+    */
 }

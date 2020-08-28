@@ -31,6 +31,7 @@ export default (props:IDict) => {
 
     switch (type){
         case 'modal': {
+            console.log(props, 'modal props base')
             main = <Modal 
             {...props}
             onOk={onOk} 

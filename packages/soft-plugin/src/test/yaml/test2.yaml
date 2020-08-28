@@ -21,6 +21,13 @@ lines:
           content: abc
       - label:
           content: bcd
+      - group:
+        - props:
+            css: ['bg-yellow-500']
+        - label:
+            content: sub1
+        - label:
+            content: sub2
     - group:
       - props:
           css: ['bg-blue-500']
@@ -39,6 +46,28 @@ lines:
           object: input1
           type: visible
           option: change
+  4:
+    - props:
+        css: []
+    - modal:
+      - props:
+          css: []
+          name: modal1
+          visible: true
+          actions:
+            - onOk:
+                object: modal1
+                type: visible
+                option: turnOff
+            - onCancel:
+                object: modal1
+                type: visible
+                option: turnOff
+
+          com:
+      - label:
+          content: modal
+
         
           
           

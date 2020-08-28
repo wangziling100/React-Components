@@ -16,7 +16,7 @@ export default (props: IDict) => {
     function onClick(e:React.MouseEvent<HTMLButtonElement>){
         //TODO
         const action = dataMapAction(props)
-        console.log(action, 'action')
+        //console.log(action, 'action')
         action()
     }
     if (name!==undefined){

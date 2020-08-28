@@ -3,7 +3,8 @@ import { stateManager } from '@wangziling100/state-manager'
 export function change(
 id:string, 
 stateKey:string,
-functionKey:string)
+functionKey:string,
+delay:number=0)
 :boolean{
     try{
         const state:boolean = stateManager.getState(id, stateKey)

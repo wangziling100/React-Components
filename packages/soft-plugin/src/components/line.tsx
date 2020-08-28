@@ -1,7 +1,6 @@
 import {IDict} from '../types'
 import * as React from 'react'
 import '../css/tailwind.css'
-import cn from 'classnames'
 import { dataMapComponent, copy } from '../lib/tools'
 import BaseCom from './base-com'
 
@@ -12,11 +11,9 @@ interface IProps{
 }
 
 export default (props:IDict) => {
-    //console.log(props, 'line props')
     const childProps = copy(props)
     const data = props.data
-    const css = props.css || []
-    //console.log('line css', css, props)
+    //const css = props.css || []
     const field = props.field
     const components = []
     let key = 0
@@ -25,7 +22,7 @@ export default (props:IDict) => {
         components.push(component)
         key++
     }
-    childProps['type'] = 'line'
+    childProps['type'] = props.type||'line'
     //console.log(childProps, 'line child props')
     //const main = BaseCom(childProps)
 
