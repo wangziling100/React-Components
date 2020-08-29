@@ -72,4 +72,4 @@ export function SoftPlugin(props: IProps){
   )
 }
 
-export default SoftPlugin
+//export default SoftPlugin
