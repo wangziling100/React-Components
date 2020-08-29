@@ -16,9 +16,7 @@ export default (props:IDict) => {
     const initVisible = strToBoolean(visibleString, true)
     const onOk = props.onOk
     const onCancel = props.onCancel
-    const onClose = props.onClose
     const css = props.css||[]
-    const placement = props.placement
     //console.log(css, 'base css')
     const type = props.type
     // States

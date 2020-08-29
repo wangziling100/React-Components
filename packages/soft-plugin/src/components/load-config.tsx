@@ -1,4 +1,4 @@
-import { Upload, message, Button, Input} from 'antd';
+import { Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import '../css/tailwind.css'
 import 'antd/dist/antd.css';

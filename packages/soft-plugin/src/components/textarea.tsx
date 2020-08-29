@@ -16,7 +16,7 @@ import '../css/tailwind.css'
 import { IDict } from '../types'
 import 'antd/dist/antd.css'
 import { stateManager } from '@wangziling100/state-manager'
-import { copy, strToBoolean, dataMapAction, dataMapComponent } from '../lib/tools'
+import { copy, strToBoolean, dataMapAction } from '../lib/tools'
 import base from './base'
 
 export default (props: IDict) => {

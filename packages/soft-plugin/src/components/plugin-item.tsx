@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Collapse } from 'antd'
 import { IConfig } from '../types'
 import Line from './line'
 import { extractProps } from '../lib/tools'

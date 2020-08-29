@@ -1,9 +1,8 @@
 import * as React from 'react'
 import { IDict } from '../types'
 import { Input } from 'antd'
-import { strToBoolean, typeMapActionName, addToStore } from '../lib/tools'
+import { strToBoolean, addToStore } from '../lib/tools'
 import { useState } from 'react'
-import { stateManager } from '@wangziling100/state-manager'
 
 
 export default (type:string,props:IDict) => {

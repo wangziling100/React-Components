@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { useState } from 'react'
 import { IDict } from '../types'
-import { readConfig, readConfigWithErrMessage } from '../lib/io'
+import { readConfigWithErrMessage } from '../lib/io'
 import Line from './line'
 import { extractProps, strToBoolean, addToStore } from '../lib/tools'
 
