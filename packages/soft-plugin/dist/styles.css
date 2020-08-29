@@ -19,6 +19,10 @@
  * Render the `main` element consistently in IE.
  */
 
+main {
+  display: block;
+}
+
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
@@ -87,7 +91,8 @@ a {
  */
 
 button,
-input {
+input,
+textarea {
   font-family: inherit; /* 1 */
   font-size: 100%; /* 1 */
   line-height: 1.15; /* 1 */
@@ -117,7 +122,9 @@ button { /* 1 */
  * Correct the inability to style clickable types in iOS and Safari.
  */
 
-button {
+button,
+[type="button"],
+[type="submit"] {
   -webkit-appearance: button;
 }
 
@@ -125,7 +132,9 @@ button {
  * Remove the inner border and padding in Firefox.
  */
 
-button::-moz-focus-inner {
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -134,7 +143,9 @@ button::-moz-focus-inner {
  * Restore the focus styles unset by the previous rule.
  */
 
-button:-moz-focusring {
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -157,6 +168,10 @@ button:-moz-focusring {
  * Remove the default vertical scrollbar in IE 10+.
  */
 
+textarea {
+  overflow: auto;
+}
+
 /**
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
@@ -165,6 +180,11 @@ button:-moz-focusring {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
 
 /**
  * 1. Correct the odd appearance in Chrome and Safari.
@@ -215,11 +235,6 @@ button:-moz-focusring {
 /**
  * Removes the default spacing and border for appropriate elements.
  */
-
-
-p {
-  margin: 0;
-}
 
 button {
   background-color: transparent;
@@ -296,7 +311,12 @@ button:focus {
  * https://github.com/tailwindcss/tailwindcss/issues/362
  */
 
-input::placeholder {
+textarea {
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
   color: #a0aec0;
 }
 
@@ -323,7 +343,8 @@ a {
  */
 
 button,
-input {
+input,
+textarea {
   padding: 0;
   line-height: inherit;
   color: inherit;
@@ -344,6 +365,12 @@ input {
  * https://github.com/mozdevs/cssremedy/issues/14
  */
 
+
+object {
+  display: block;
+  vertical-align: middle;
+}
+
 /**
  * Constrain images and videos to the parent width and preserve
  * their instrinsic aspect ratio.
@@ -351,10 +378,28 @@ input {
  * https://github.com/mozdevs/cssremedy/issues/14
  */
 
+.bg-red-500 {
+  --bg-opacity: 1;
+  background-color: #f56565;
+  background-color: rgba(245, 101, 101, var(--bg-opacity));
+}
+
+.bg-yellow-500 {
+  --bg-opacity: 1;
+  background-color: #ecc94b;
+  background-color: rgba(236, 201, 75, var(--bg-opacity));
+}
+
 .bg-blue-300 {
   --bg-opacity: 1;
   background-color: #90cdf4;
   background-color: rgba(144, 205, 244, var(--bg-opacity));
+}
+
+.bg-blue-500 {
+  --bg-opacity: 1;
+  background-color: #4299e1;
+  background-color: rgba(66, 153, 225, var(--bg-opacity));
 }
 
 .cursor-pointer {
@@ -369,6 +414,14 @@ input {
   display: none;
 }
 
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
 .font-light {
   font-weight: 300;
 }
@@ -377,12 +430,21 @@ input {
   font-weight: 600;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .text-xs {
   font-size: 0.75rem;
 }
 
 .text-sm {
   font-size: 0.875rem;
+}
+
+.mx-2 {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .mt-1 {
@@ -407,10 +469,6 @@ input {
 
 .mt-20 {
   margin-top: 5rem;
-}
-
-.p-1 {
-  padding: 0.25rem;
 }
 
 .py-2 {
@@ -441,6 +499,12 @@ input {
   color: rgba(245, 101, 101, var(--text-opacity));
 }
 
+.text-blue-500 {
+  --text-opacity: 1;
+  color: #4299e1;
+  color: rgba(66, 153, 225, var(--text-opacity));
+}
+
 .text-indigo-700 {
   --text-opacity: 1;
   color: #4c51bf;
@@ -467,8 +531,24 @@ input {
   width: 1.5rem;
 }
 
+.w-20 {
+  width: 5rem;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
 .w-64 {
   width: 16rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-screen {
+  width: 100vw;
 }
 
 @keyframes spin {
@@ -549,9 +629,10 @@ input::-ms-reveal {
   width: device-width;
 }
 
-p {
-  margin-top: 0;
-  margin-bottom: 1em;
+
+input[type='number'],
+textarea {
+  -webkit-appearance: none;
 }
 
 a {
@@ -586,13 +667,16 @@ a:focus {
 
 a,
 button,
-input:not([type='range']) {
+input:not([type='range']),
+label,
+textarea {
   -ms-touch-action: manipulation;
   touch-action: manipulation;
 }
 
 input,
-button {
+button,
+textarea {
   margin: 0;
   color: inherit;
   font-size: inherit;
@@ -609,13 +693,26 @@ button {
   text-transform: none;
 }
 
-button {
+button,
+[type="submit"] {
   -webkit-appearance: button;
 }
 
-button::-moz-focus-inner {
+button::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
   padding: 0;
   border-style: none;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+  height: auto;
 }
 
 [hidden] {
