@@ -15,7 +15,7 @@ interface IProps {
 }
 
 
-function SoftPlugin(props: IProps){
+export function SoftPlugin(props: IProps){
   // States
   const [ loadConfig, setLoadConfig ] = useState<IConfig>()
   const [visible, setVisible] = useState(false)
