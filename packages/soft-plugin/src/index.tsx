@@ -15,7 +15,7 @@ interface IProps {
 }
 
 
-export default (props: IProps) => {
+const SoftPlugin = (props: IProps) => {
   // States
   const [ loadConfig, setLoadConfig ] = useState<IConfig>()
   const [visible, setVisible] = useState(false)
@@ -71,3 +71,5 @@ export default (props: IProps) => {
     </>
   )
 }
+
+export default SoftPlugin

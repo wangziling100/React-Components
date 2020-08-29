@@ -22,9 +22,9 @@ module.exports = {
     path: path.join(__dirname, '/dist'),
     filename: 'index.js',
     libraryTarget: 'umd',
-    //library: SoftPlugin,
+    library: SoftPlugin,
     publicPath: path.join(__dirname, '/dist'),
-    libraryExport: 'default'
+    //libraryExport: 'default'
   },
   optimization:{
     splitChunks: {
