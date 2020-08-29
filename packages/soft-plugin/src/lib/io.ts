@@ -65,12 +65,27 @@ export function addConfig(name:string, config: IConfig):boolean{
 
 export function readConfig(yamlFile:string): IConfig|null{
     try{
+        console.log(yamlFile)
         const doc = yaml.safeLoad(yamlFile);
+        console.log(doc)
         return objToConfig(doc)
     }
     catch(err){
         console.log(err)
         return null
+    }
+}
+
+export function readConfigWithErrMessage(yamlFile:string): IConfig|string{
+    try{
+        console.log(yamlFile)
+        const doc = yaml.safeLoad(yamlFile);
+        console.log(doc)
+        return objToConfig(doc)
+    }
+    catch(err){
+        console.log(err)
+        return err.message
     }
 }
 

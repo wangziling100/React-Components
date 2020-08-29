@@ -8,7 +8,7 @@ import * as io from '../lib/io'
 import cn from 'classnames'
 import { IConfig } from '../types'
 import { stateManager } from '@wangziling100/state-manager'
-import { IDict } from '@wangziling100/state-manager/src/lib/types';
+import { IDict } from '../types';
 
 interface IProps {
   setConfig: React.Dispatch<React.SetStateAction<IConfig|undefined>>;

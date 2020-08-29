@@ -40,7 +40,7 @@ functionKey:string)
 :boolean{
     try{
         const setState = stateManager.getFunction(id, functionKey)
-        setState(true)
+        setState(false)
         return true
     }
     catch(err){

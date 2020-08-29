@@ -1,4 +1,4 @@
-name: test2
+name: test3
 lines:
   1:
     - props:
@@ -49,49 +49,49 @@ lines:
   4:
     - props:
         css: ['w-screen']
-    - modal:
+    - drawer:
       - props:
-          css: ['w-full', 'flex']
-          name: modal2
-          visible: true
-          style:
-            height: 100%
-            width: 100%
+          css: []
+          name: drawer
+          visible: false
+          placement: left
+          title: drawer
+          width: 80%
           actions:
-            - onOk:
-                object: modal1
-                type: visible
-                option: turnOff
-            - onCancel:
-                object: modal1
+            - onClose:
+                object: drawer
                 type: visible
                 option: turnOff
       - group:
         - props:
-            css: ['flex']
+            css: ['w-full', 'h-full', 'flex']
         - group:
             - props:
-                css: []
+                css: ['w-1/2', 'mx-2', 'h-full']
             - label:
                 content: Input
             - textarea:
-                rows: 5
+                rows: 20
+                name: builder-source
+                action:
+                  object: builder1
+                  type: io
+                  option: set
         - group:
             - props:
-                css: []
+                css: ['w-1/2', 'mx-2', 'h-full']
             - label:
                 content: Component
-         
+            - builder:
+                name: builder1
+
+
   5:
     - props:
         css: []
     - button:
         content: turn on
         action:
-          object: modal1
+          object: drawer
           type: visible
           option: turnOn
-
-        
-          
-          

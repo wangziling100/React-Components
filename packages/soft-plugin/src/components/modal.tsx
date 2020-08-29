@@ -1,8 +1,6 @@
 import * as React from 'react'
-import { copy, strToBoolean } from '../lib/tools'
-import base from './base'
+import { copy } from '../lib/tools'
 import { IDict } from '../types'
-import cn from 'classnames'
 import Line from './line'
 
 export default (props: IDict) => {

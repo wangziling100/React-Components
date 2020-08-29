@@ -1,11 +1,10 @@
 import * as React from 'react'
 import { IDict } from '../types'
-import { Input, Modal } from 'antd'
+import { Modal, Drawer } from 'antd'
 import { strToBoolean, typeMapActionName } from '../lib/tools'
 import { useState } from 'react'
 import { stateManager } from '@wangziling100/state-manager'
 import cn from 'classnames'
-
 
 export default (props:IDict) => {
     let main: any
@@ -15,10 +14,11 @@ export default (props:IDict) => {
     const name = props.name
     const visibleString = props.visible
     const initVisible = strToBoolean(visibleString, true)
-    const onChange = props.onChange
     const onOk = props.onOk
     const onCancel = props.onCancel
+    const onClose = props.onClose
     const css = props.css||[]
+    const placement = props.placement
     //console.log(css, 'base css')
     const type = props.type
     // States
@@ -31,7 +31,7 @@ export default (props:IDict) => {
 
     switch (type){
         case 'modal': {
-            console.log(props, 'modal props base')
+            //console.log(props, 'modal props base')
             main = <Modal 
             {...props}
             onOk={onOk} 
@@ -48,6 +48,16 @@ export default (props:IDict) => {
                 </div>
             )
             break;
+        }
+        case 'drawer': {
+            console.log(props, 'base com drawer')
+            main = <Drawer 
+            {...props}
+            visible={visible}>
+                {props.children}
+            </Drawer>
+            break;
+
         }
         default: main = <>{props.children}</>; break;
     }

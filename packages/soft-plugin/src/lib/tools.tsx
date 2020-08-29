@@ -4,38 +4,58 @@ import Label from '../components/label'
 import Button from '../components/button'
 import Modal from '../components/modal'
 import Textarea from '../components/textarea'
+import Drawer from '../components/drawer'
+import Builder from '../components/builder'
 import { IDict } from '../types'
 import * as React from 'react'
 import * as Switch from '../actions/switch'
+import * as IO from '../actions/io'
+import { stateManager } from '@wangziling100/state-manager'
 
-export function dataMapComponent(data:IDict, field:string, key:number){
-    //console.log(field, 'field when map data to component')
-    const type = Object.keys(data)[0]
-    const props = data[type]
-    props['field'] = field
-    let component: any
+export function dataMapComponent(data:IDict, field:string, key:number):any|null{
+    try{
+        const type = Object.keys(data)[0]
+        const props = data[type]
+        props['field'] = field
+        let component: any
 
-    switch(type){
-        case 'group': {
-            //console.log(props, 'group props')
-            const newProps = extractProps(props, 'group')
-            newProps['field'] = field
-            component=<Group {...newProps} key={key}/>; break;
+        switch(type){
+            case 'group': {
+                //console.log(props, 'group props')
+                const newProps = extractProps(props, 'group')
+                newProps['field'] = field
+                component=<Group {...newProps} key={key}/>; break;
+            }
+            case 'modal': {
+                let newProps = extractProps(props, 'modal')
+                newProps['field'] = field
+                newProps = xToProps(newProps)
+                console.log(data, props, newProps, 'modal props')
+                component=<Modal {...newProps} key={key}/>; break;
+            }
+            case 'drawer': {
+                let newProps = extractProps(props, 'drawer')
+                newProps['field'] = field
+                newProps = xToProps(newProps)
+                component = <Drawer {...newProps} key={key}/>
+                break
+            }
+            case 'builder': component=<Builder {...props} key={key}/>; break;
+            case 'input': component=<Input {...props} key={key}/>; break;
+            case 'label': component=<Label {...props} key={key}/>; break;
+            case 'textarea': {
+                component=<Textarea {...props} key={key}/>; 
+                break;
+            }
+            case 'button': component=<Button {...props} key={key}/>; break;
+            default: component=null; break;
         }
-        case 'modal': {
-            let newProps = extractProps(props, 'modal')
-            newProps['field'] = field
-            newProps = xToProps(newProps)
-            console.log(data, props, newProps, 'modal props')
-            component=<Modal {...newProps} key={key}/>; break;
-        }
-        case 'input': component=<Input {...props} key={key}/>; break;
-        case 'label': component=<Label {...props} key={key}/>; break;
-        case 'textarea': component=<Textarea {...props} key={key}/>; break;
-        case 'button': component=<Button {...props} key={key}/>; break;
-        default: component=null; break;
+        return component
     }
-    return component
+    catch(err){
+        console.log(err)
+        return null
+    }
 }
 
 export function dataMapAction(data:IDict){
@@ -45,21 +65,11 @@ export function dataMapAction(data:IDict){
     const obj = data.action.object
     const actionName = typeMapActionName(obj, actionType)
     let ret
-    /*
-    switch(option){
-        case 'change': ret = ()=>Switch.change(id, actionName, actionName);break;
-        case 'turnOn': ret = ()=>Switch.turnOn(id, actionName);break;
-        case 'turnOff': ret = ()=>Switch.turnOff(id, actionName);break;
-        default: throw('It failed mapping data to action!!'); 
-    }
-    */
     ret = nameMapAction(actionName, option, id)
     return ret
-
-
 }
 export function typeMapActionName(name:string, type:string):string{
-    const actions = ['visible']
+    const actions = ['visible', 'io']
     let exist = false
     for (let n of actions){
         if(type===n) exist = true
@@ -89,7 +99,7 @@ export function xToProps(props:IDict):IDict{
                 break
             }
             case 'actions':{
-                extractPropsFromAction(field, actions)
+                //extractPropsFromAction(field, actions)
                 // TODO
                 ret = extractPropsFromAction(field, actions)
                 console.log(ret, 'xToProps')
@@ -122,12 +132,19 @@ export function extractPropsFromAction(field:string, actions:IDict){
     return ret
 }
 
-export function nameMapAction(name:string, option:string, id:string){
+export function nameMapAction(
+name:string, 
+option:string, 
+id:string){
     let ret
     switch(option){
         case 'change': ret = ()=>Switch.change(id, name, name);break;
         case 'turnOn': ret = ()=>Switch.turnOn(id, name);break;
         case 'turnOff': ret = ()=>Switch.turnOff(id, name);break;
+        case 'set':{
+            ret = (value:any)=>{IO.setData(id, '', name, value, null)}
+            break
+        } 
         default: throw('It failed mapping data to action!!'); 
     }
     return ret
@@ -148,4 +165,15 @@ export function copy(data:IDict):IDict{
         ret[index] = data[index]
     }
     return ret
+}
+
+export function addToStore(
+id:string,
+name:string, 
+type:string, 
+value:any, 
+fn:Function){
+    const actionName = typeMapActionName(name, type)
+    stateManager.addState(id, actionName, value)    
+    stateManager.addFunction(id, actionName, fn)
 }
