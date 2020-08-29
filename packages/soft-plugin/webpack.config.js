@@ -14,14 +14,17 @@ module.exports = {
   entry: {
     main: [
       //'./src/css/tailwind.css',
-      './src/index',
+      './src/index.tsx',
     ]
   },
   // and output it into /dist as bundle.js
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js',
-    publicPath: '/'
+    filename: 'index.js',
+    libraryTarget: 'umd',
+    library: SoftPlugin,
+    publicPath: path.join(__dirname, '/dist'),
+    libraryExport: 'default'
   },
   optimization:{
     splitChunks: {
