@@ -1,8 +1,8 @@
-import './css/tailwind.css';
+//import './css/tailwind.css';
 import * as React from 'react';
 import { useState } from 'react';
 import { Divider, Drawer, Collapse } from 'antd';
-import 'antd/dist/antd.css';
+//import 'antd/dist/antd.css';
 import LoadConfig from './components/load-config'
 import { IConfig } from './types'
 import { stateManager, useLocal } from '@wangziling100/state-manager'
