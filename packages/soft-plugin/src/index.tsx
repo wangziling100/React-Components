@@ -8,7 +8,7 @@ import { IConfig } from './types'
 import { stateManager, useLocal } from '@wangziling100/state-manager'
 import PluginList from './components/plugin-list';
 import { IDict } from './types';
-
+/*
 interface IProps {
     data: Object 
     drawerProps: IDict
@@ -71,9 +71,9 @@ const SoftPlugin = (props: IProps) => {
     </>
   )
 }
-
+*/
 export default (props:any) => {
   return(
-    <> Default </>
+    <div> Default </div>
   )
 }
