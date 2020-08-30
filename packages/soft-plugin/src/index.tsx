@@ -1,21 +1,20 @@
-//import './css/tailwind.css';
+import './css/tailwind.css';
 import * as React from 'react';
 import { useState } from 'react';
 import { Divider, Drawer, Collapse } from 'antd';
-//import 'antd/dist/antd.css';
+import 'antd/dist/antd.css';
 import LoadConfig from './components/load-config'
 import { IConfig } from './types'
 import { stateManager, useLocal } from '@wangziling100/state-manager'
 import PluginList from './components/plugin-list';
 import { IDict } from './types';
-/*
 interface IProps {
     data: Object 
     drawerProps: IDict
 }
 
 
-const SoftPlugin = (props: IProps) => {
+export default (props: IProps) => {
   // States
   const [ loadConfig, setLoadConfig ] = useState<IConfig>()
   const [visible, setVisible] = useState(false)
@@ -71,9 +70,10 @@ const SoftPlugin = (props: IProps) => {
     </>
   )
 }
-*/
+/*
 export default (props:any) => {
   return(
     <div> Default </div>
   )
 }
+*/
