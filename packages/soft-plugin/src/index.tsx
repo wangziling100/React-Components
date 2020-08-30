@@ -13,7 +13,6 @@ interface IProps {
     drawerProps: IDict
 }
 
-
 export default (props: IProps) => {
   // States
   const [ loadConfig, setLoadConfig ] = useState<IConfig>()
