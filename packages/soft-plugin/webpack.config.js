@@ -29,6 +29,7 @@ module.exports = {
   },
   optimization:{
     splitChunks: {
+      /*
       cacheGroups: {
         styles: {
           name: 'styles',
@@ -37,6 +38,8 @@ module.exports = {
           enforce: true
         }
       }
+      */
+     chunks: 'all'
     },
   },
   // adding .ts and .tsx to resolve.extensions will help babel look for .ts and .tsx files to transpile
@@ -116,7 +119,9 @@ plugins: [
     favicon: './public/favicon.ico'
   }),
   */
-  new MiniCssExtractPlugin(),
+  new MiniCssExtractPlugin({
+    filename: "styles.css"
+  }),
   new PurgecssPlugin({
       paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
   }),
