@@ -1,5 +1,5 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+//const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { dirname } = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PurgecssPlugin = require('purgecss-webpack-plugin');
@@ -22,6 +22,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'index.js',
+    globalObject: 'this',
     libraryTarget: 'umd',
     library: 'StateManager',
     publicPath: path.join(__dirname, '/dist'),
