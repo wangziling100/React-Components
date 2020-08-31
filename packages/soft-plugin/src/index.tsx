@@ -8,21 +8,28 @@ import { IConfig } from './types'
 import { stateManager, useLocal } from '@wangziling100/state-manager'
 import PluginList from './components/plugin-list';
 import { IDict } from './types';
+import drawer from './components/drawer';
 interface IProps {
     data: Object 
     drawerProps: IDict
 }
 
-export default (props: IProps) => {
+export default (props: IProps|undefined) => {
   // States
   const [ loadConfig, setLoadConfig ] = useState<IConfig>()
   const [visible, setVisible] = useState(false)
   const [ configs, setConfigs ] = useState({})
   // Variables
   const id = 'index'
-  const data = props.data
+  let data, drawerProps
+  if(props!==undefined){
+    data = props.data || null
+    drawerProps = props.drawerProps || {width:420}
+  }
+  else{
+    drawerProps = {width:420}
+  }
   const { Panel } = Collapse;
-  const drawerProps = props.drawerProps || {width:420}
   // Functions
   const showDrawer = () => {
       setVisible(true)
