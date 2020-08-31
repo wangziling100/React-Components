@@ -8,7 +8,7 @@ import { IConfig } from './types'
 import { stateManager, useLocal } from '@wangziling100/state-manager'
 import PluginList from './components/plugin-list';
 import { IDict } from './types';
-import drawer from './components/drawer';
+//import drawer from './components/drawer';
 interface IProps {
     data: Object 
     drawerProps: IDict
