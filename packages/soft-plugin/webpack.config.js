@@ -4,7 +4,6 @@ const { dirname } = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const PATHS = {
   src: path.join(__dirname, 'src')
