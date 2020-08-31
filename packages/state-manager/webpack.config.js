@@ -22,10 +22,10 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'index.js',
-    globalObject: 'this',
     libraryTarget: 'umd',
     library: 'StateManager',
-    publicPath: path.join(__dirname, '/dist'),
+    globalObject: 'this',
+    //publicPath: path.join(__dirname, '/dist'),
     //libraryExport: 'default'
   },
   optimization:{
