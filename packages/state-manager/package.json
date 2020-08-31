@@ -1,6 +1,6 @@
 {
   "name": "@wangziling100/state-manager",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "A React based state management system, like Redux, but easier to use",
   "keywords": [
     "react",
