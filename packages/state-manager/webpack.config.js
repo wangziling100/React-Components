@@ -9,6 +9,7 @@ const PATHS = {
   src: path.join(__dirname, 'src')
 }
 
+
 module.exports = {
   // webpack will take the files from ./src/index
   entry: {
