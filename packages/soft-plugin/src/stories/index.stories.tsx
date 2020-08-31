@@ -1,11 +1,17 @@
 import { storiesOf } from "@storybook/react";
-import Plugin from '../components';
+import '../css/tailwind.css'
+import Plugin from '../index';
 import * as React from 'react';
-storiesOf("Button", module)
-    .add("red",
-        () => <Plugin css={[]} />
+storiesOf("Plugin", module)
+    .add("default",
+        () => {
+          return(
+              <div className='w-64'>
+                <Plugin />
+              </div>
+          )
+        }
+
     )
-    .add("blue",
-        () => <Plugin />
-    )
+    
     
