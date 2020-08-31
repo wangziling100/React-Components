@@ -4,6 +4,7 @@ const { dirname } = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PurgecssPlugin = require('purgecss-webpack-plugin');
 const glob = require('glob');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const PATHS = {
   src: path.join(__dirname, 'src')
@@ -12,7 +13,7 @@ const PATHS = {
 module.exports = {
   // webpack will take the files from ./src/index
   entry: {
-    main: [
+    index: [
       //'./src/css/tailwind.css',
       //'./src/lib/tools',
       './src/index.tsx'
@@ -21,15 +22,16 @@ module.exports = {
   // and output it into /dist as bundle.js
   output: {
     path: path.join(__dirname, '/dist'),
-    filename: 'index.js',
+    filename: '[name].js',
+    chunkFilename: '[name].js',
     libraryTarget: 'umd',
     library: 'SoftPlugin',
     publicPath: path.join(__dirname, '/dist'),
     libraryExport: 'default'
   },
+  /*
   optimization:{
     splitChunks: {
-      /*
       cacheGroups: {
         styles: {
           name: 'styles',
@@ -38,10 +40,10 @@ module.exports = {
           enforce: true
         }
       }
-      */
      chunks: 'all'
     },
   },
+  */
   // adding .ts and .tsx to resolve.extensions will help babel look for .ts and .tsx files to transpile
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
