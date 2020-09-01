@@ -4,6 +4,7 @@
         "yarn lint",
         "yarn test",
         "yarn tsc --declaration --emitDeclarationOnly --declarationMap",
-        "yarn build"
+        "yarn build",
+        "bash scripts/windowToThis.sh"
     ]
 }
