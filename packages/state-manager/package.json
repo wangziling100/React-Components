@@ -48,7 +48,7 @@
     }
   },
   "scripts": {
-    "test": "jest src/test",
+    "test": "jest src/test --passWithNoTests",
     "eject": "react-scripts eject",
     "bundle": "webpack",
     "build": "webpack --mode production",
