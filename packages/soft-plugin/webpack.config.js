@@ -25,7 +25,7 @@ module.exports = {
     chunkFilename: '[name].js',
     libraryTarget: 'umd',
     library: 'SoftPlugin',
-    globalObject: 'this',
+    globalObject: 'typeof self !== \'undefined\' ? self : this',
     publicPath: path.join(__dirname, '/dist'),
     libraryExport: 'default'
   },
