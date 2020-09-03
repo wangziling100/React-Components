@@ -1,6 +1,7 @@
 import { useState, createContext } from 'react';
 import * as React from 'react';
 import { StateManager } from './lib/tools'
+import { useSession, useLocal } from './lib/effect'
 
 export let stateManager = new StateManager()
 
@@ -17,3 +18,4 @@ export function ManageState(props:any){
     )
 }
 export default ManageState
+export {useSession, useLocal}
