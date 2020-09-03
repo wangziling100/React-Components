@@ -25,7 +25,7 @@ module.exports = {
     filename: 'index.js',
     libraryTarget: 'umd',
     library: 'StateManager',
-    globalObject: 'this',
+    globalObject: 'typeof self !== \'undefined\' ? self : this',
     //publicPath: path.join(__dirname, '/dist'),
     //libraryExport: 'default'
   },
