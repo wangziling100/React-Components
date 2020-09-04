@@ -35,14 +35,14 @@ export default (props: IProps) => {
       if (config!==null) {
         console.log(config)
         setSucceed(true)
-        let configs = stateManager.getState('index', 'configs')
+        let configs = stateManager.getState('soft-plugin-index', 'configs')
         const name = config.name
         const storedConfig: IDict = {}
         storedConfig[name] = config
         configs = Object.assign(configs, )
-        const setConfigs = stateManager.getFunction('index', 'setConfigs')
+        const setConfigs = stateManager.getFunction('soft-plugin-index', 'setConfigs')
         setConfigs(Object.assign(configs, storedConfig))
-        stateManager.writeLocal('index')
+        stateManager.writeLocal('soft-plugin-index')
         if (props!==undefined){
           props.setConfig(config)
         }
