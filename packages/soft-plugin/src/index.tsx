@@ -8,32 +8,42 @@ import { IConfig } from './types'
 import { stateManager, useLocal } from '@wangziling100/state-manager'
 import PluginList from './components/plugin-list';
 import { IDict } from './types';
+import { setVisible } from './lib/options';
 //import drawer from './components/drawer';
 interface IProps {
     data: Object 
     drawerProps: IDict
+    visible: boolean
+    setVisible: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default (props: IProps|undefined) => {
   // States
   const [ loadConfig, setLoadConfig ] = useState<IConfig>()
-  const [visible, setVisible] = useState(false)
+  //const [visible, setVisible] = useState(false)
   const [ configs, setConfigs ] = useState({})
   // Variables
-  const id = 'index'
-  let data, drawerProps
+  const id = 'soft-plugin-index'
+  let data, drawerProps, visible
+  let setVisible: Function
   if(props!==undefined){
     data = props.data || null
     drawerProps = props.drawerProps || {width:420}
+    visible = props.visible 
+    setVisible = props.setVisible
   }
   else{
     drawerProps = {width:420}
+    visible = false
+    setVisible = ()=>{}
   }
   const { Panel } = Collapse;
   // Functions
+  /*
   const showDrawer = () => {
       setVisible(true)
   }
+  */
   const onClose = () => {
       setVisible(false)
   }
@@ -47,13 +57,14 @@ export default (props: IProps|undefined) => {
   stateManager.addFunction(id, 'setConfigs', setConfigs)
   stateManager.addToLocalSet(id, 'configs')
   // Effect
-  useLocal('index')
+  useLocal('soft-plugin-index')
   // Components
   const tmp = []
   tmp.push(<div> test here </div>)
 
   return (
     <>
+      {/*
       <div  className='fixed right-0 mt-20 px-2 w-6 py-2
                       bg-blue-300 break-all text-center text-indigo-700
                       text-xs font-semibold uppercase
@@ -61,6 +72,7 @@ export default (props: IProps|undefined) => {
             onClick={showDrawer}>
         Plugin
       </div>
+      */}
       <Drawer
         title="Plugin System"
         placement="right"
