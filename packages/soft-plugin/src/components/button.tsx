@@ -1,9 +1,9 @@
 import * as React from 'react'
 import { Button } from 'antd'
 import cn from 'classnames'
-import '../css/tailwind.css'
+//import '../css/tailwind.css'
 import { IDict } from '../types'
-import 'antd/dist/antd.css'
+//import 'antd/dist/antd.css'
 //import { stateManager } from '@wangziling100/state-manager'
 import { dataMapAction } from '../lib/tools'
 export default (props: IDict) => {

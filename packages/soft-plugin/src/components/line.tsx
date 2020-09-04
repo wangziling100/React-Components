@@ -1,6 +1,6 @@
 import {IDict} from '../types'
 import * as React from 'react'
-import '../css/tailwind.css'
+//import '../css/tailwind.css'
 import { dataMapComponent, copy } from '../lib/tools'
 import BaseCom from './base-com'
 

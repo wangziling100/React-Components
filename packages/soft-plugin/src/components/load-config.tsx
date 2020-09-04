@@ -1,7 +1,7 @@
 import { Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import '../css/tailwind.css'
-import 'antd/dist/antd.css';
+//import '../css/tailwind.css'
+//import 'antd/dist/antd.css';
 import * as React from 'react'
 import { useState } from 'react'
 import * as io from '../lib/io'
