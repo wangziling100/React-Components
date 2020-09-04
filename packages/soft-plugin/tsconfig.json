@@ -17,7 +17,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
-    "outDir": "js-build",
+    "outDir": "build",
     "jsx": "react"
   },
   "include": [
