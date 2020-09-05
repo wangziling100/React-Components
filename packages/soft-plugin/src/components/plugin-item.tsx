@@ -22,6 +22,12 @@ export default (props: IProps) => {
     console.log(lines, 'lines')
     const main = (
       <>
+        <div 
+        className='flex justify-end
+                   text-gray-400 hover:text-blue-300 
+                   cursor-pointer'> 
+          delete 
+        </div>
         {lines}
       </>
     )
