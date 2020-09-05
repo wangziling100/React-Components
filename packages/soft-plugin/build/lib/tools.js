@@ -78,6 +78,8 @@ export function dataMapComponent(data, field, key) {
     }
 }
 export function dataMapAction(data) {
+    if (data.action === undefined)
+        return null;
     var actionType = data.action.type;
     var id = data.field;
     var option = data.action.option;

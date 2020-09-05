@@ -19,6 +19,8 @@ export default (function (props) {
     function onChange(e) {
         setData(e.target.value);
         var action = dataMapAction(props);
+        if (action === null)
+            return;
         action(e.target.value);
     }
     childProps['onChange'] = props.onChange || onChange;

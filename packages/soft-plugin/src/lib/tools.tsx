@@ -59,6 +59,7 @@ export function dataMapComponent(data:IDict, field:string, key:number):any|null{
 }
 
 export function dataMapAction(data:IDict){
+    if (data.action===undefined) return null
     const actionType = data.action.type
     const id = data.field
     const option = data.action.option

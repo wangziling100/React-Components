@@ -21,6 +21,8 @@ export default (function (props) {
     var content = props.content;
     function onClick(e) {
         var action = dataMapAction(props);
+        if (action === null)
+            return;
         action();
     }
     if (name !== undefined) {

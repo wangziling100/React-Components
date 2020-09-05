@@ -24,6 +24,7 @@ export default (props: IDict) => {
     function onChange(e:React.ChangeEvent<HTMLInputElement>){
         setData(e.target.value)
         const action = dataMapAction(props)
+        if (action===null) return
         action(e.target.value)
     }
     childProps['onChange'] = props.onChange||onChange
