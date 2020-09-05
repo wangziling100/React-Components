@@ -6,10 +6,12 @@ import Modal from '../components/modal'
 import Textarea from '../components/textarea'
 import Drawer from '../components/drawer'
 import Builder from '../components/builder'
+import Notification from '../components/notification'
 import { IDict } from '../types'
 import * as React from 'react'
 import * as Switch from '../actions/switch'
 import * as IO from '../actions/io'
+import * as Info from '../actions/info'
 import { stateManager } from '@wangziling100/state-manager'
 
 export function dataMapComponent(data:IDict, field:string, key:number):any|null{
@@ -21,7 +23,6 @@ export function dataMapComponent(data:IDict, field:string, key:number):any|null{
 
         switch(type){
             case 'group': {
-                //console.log(props, 'group props')
                 const newProps = extractProps(props, 'group')
                 newProps['field'] = field
                 component=<Group {...newProps} key={key}/>; break;
@@ -30,7 +31,6 @@ export function dataMapComponent(data:IDict, field:string, key:number):any|null{
                 let newProps = extractProps(props, 'modal')
                 newProps['field'] = field
                 newProps = xToProps(newProps)
-                console.log(data, props, newProps, 'modal props')
                 component=<Modal {...newProps} key={key}/>; break;
             }
             case 'drawer': {
@@ -48,6 +48,7 @@ export function dataMapComponent(data:IDict, field:string, key:number):any|null{
                 break;
             }
             case 'button': component=<Button {...props} key={key}/>; break;
+            case 'notification': component=<Notification {...props} key={key}/>; break;
             default: component=null; break;
         }
         return component
@@ -70,7 +71,7 @@ export function dataMapAction(data:IDict){
     return ret
 }
 export function typeMapActionName(name:string, type:string):string{
-    const actions = ['visible', 'io']
+    const actions = ['visible', 'io', 'info']
     let exist = false
     for (let n of actions){
         if(type===n) exist = true
@@ -100,10 +101,7 @@ export function xToProps(props:IDict):IDict{
                 break
             }
             case 'actions':{
-                //extractPropsFromAction(field, actions)
-                // TODO
                 ret = extractPropsFromAction(field, actions)
-                console.log(ret, 'xToProps')
                 ret = Object.assign(props, ret)
                 break
             }
@@ -114,22 +112,18 @@ export function xToProps(props:IDict):IDict{
 }
 
 export function extractPropsFromAction(field:string, actions:IDict){
-    //console.log(field, actions, 'extract props from action')
     const ret:IDict = {}
     for(let index in actions){
         let action
         action = actions[index]
         const propName = Object.keys(action)[0]
         action = action[propName]
-        //console.log(action, 'action in loop')
         const actionObj = action.object
         const actionOption = action.option
         const actionType = action.type
         const actionName = typeMapActionName(actionObj, actionType)
-        //console.log(actionName, actionOption, field, 'name map action')
         ret[propName] = nameMapAction(actionName, actionOption, field)
     }
-    //console.log(ret, 'props from action result')
     return ret
 }
 
@@ -146,6 +140,7 @@ id:string){
             ret = (value:any)=>{IO.setData(id, '', name, value, null)}
             break
         } 
+        case 'notification': ret = ()=>Info.notificate(id, name); break;
         default: throw('It failed mapping data to action!!'); 
     }
     return ret

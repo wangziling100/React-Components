@@ -46,51 +46,25 @@ lines:
           object: input1
           type: visible
           option: change
-  4:
-    - props:
-        css: ['w-screen']
-    - modal:
-      - props:
-          css: ['w-full', 'flex']
-          name: modal2
-          visible: true
-          style:
-            height: 100%
-            width: 100%
-          actions:
-            - onOk:
-                object: modal1
-                type: visible
-                option: turnOff
-            - onCancel:
-                object: modal1
-                type: visible
-                option: turnOff
-      - group:
-        - props:
-            css: ['flex']
-        - group:
-            - props:
-                css: []
-            - label:
-                content: Input
-            - textarea:
-                rows: 5
-        - group:
-            - props:
-                css: []
-            - label:
-                content: Component
          
-  5:
+  6:
     - props:
         css: []
     - button:
-        content: turn on
+        css: []
+        content: notification
         action:
-          object: modal1
-          type: visible
-          option: turnOn
+          object: notification1
+          type: info
+          option: notification
+    - notification:
+        type: warning
+        duration: 3
+        message: Notification
+        description: Test
+        name: notification1
+        placement: topLeft
+
 
         
           
