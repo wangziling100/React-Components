@@ -60,7 +60,7 @@
     "url": "https://github.com/wangziling100/React-Components/issues"
   },
   "dependencies": {
-    "@wangziling100/store-manager": "^0.4.2"
+    "@wangziling100/store-manager": "^0.5.1"
   },
   "eslintConfig": {
     "extends": "react-app"
