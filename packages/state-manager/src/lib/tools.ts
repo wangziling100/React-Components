@@ -54,12 +54,6 @@ export class StateManager {
         return this.store
     }
 
-    clear(id:IKey, key:IKey){
-        if(id===null){
-
-        }
-    }
-
     addState(id:string, key:string, value:any){
         if(this.store.state[id]===undefined
         || this.store.state[id]===null){
@@ -532,5 +526,8 @@ export class StateManager {
             this.storeManagers[id] = new StoreManager(id)
         }
         return this.storeManagers[id]
+    }
+    getAllManagers():IDict{
+        return this.storeManagers
     }
 }
