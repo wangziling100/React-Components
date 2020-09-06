@@ -276,6 +276,11 @@ export class StoreManager{
         return deleteLocal(this.tableName, key)
     }
 
+    clear(){
+        this.deleteSession()
+        this.deleteLocal()
+    }
+
     updateSession(
         table:IDict, 
         create:boolean=true):boolean{
