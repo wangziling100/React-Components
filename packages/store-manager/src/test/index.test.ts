@@ -10,10 +10,20 @@ import {
   readSession,
   writeLocal,
   writeSession,
+  deleteLocal,
+  deleteSession,
   updateLocal,
   updateSession
 } from '../index'
 
+beforeEach(()=>{
+  sessionStorage.clear()
+  localStorage.clear()
+})
+afterEach(()=>{
+  sessionStorage.clear()
+  localStorage.clear()
+})
 test('check empty storage', () => {
   expect(checkLocal('test', null)).toBe(false)
   expect(checkSession('test', null)).toBe(false)
@@ -22,8 +32,6 @@ test('check empty storage', () => {
   const manager = new StoreManager('test', {'key':{}})
   expect(manager.checkLocal()).toBe(false)
   expect(manager.checkSession()).toBe(false)
-  localStorage.clear()
-  sessionStorage.clear()
 });
 
 test('create storage', () => {
@@ -38,8 +46,6 @@ test('create storage', () => {
   expect(manager.readLocal()).toEqual(store)
   expect(manager.readSession()).toEqual(store)
 
-  localStorage.clear()
-  sessionStorage.clear()
 })
 
 test('write storage', ()=>{
@@ -77,8 +83,6 @@ test('write storage', ()=>{
   expect(manager.writeSession(store1, true)).toBe(true)
   expect(manager.readSession(null)).toEqual(store1)
 
-  localStorage.clear()
-  sessionStorage.clear()
 })
 
 test('read storage', () => {
@@ -111,8 +115,31 @@ test('read storage', () => {
   expect(readSession('sess', null, 'key3', store1, true)).toEqual(store1)
   writeSession('sess', store2)
   expect(readSession('sess', null, ['key1', 'key2', 'key3'], store1, true)).toEqual(store1)
-  localStorage.clear()
-  sessionStorage.clear()
+})
+
+test('delete storage', ()=>{
+  const store0 = {}
+  const store1 = {'key': {}}
+  const store2 = {'key1': 'abc', 'key2':1, 'key3': {}}
+  writeLocal('local', store1)
+  expect(deleteLocal('local')).toEqual(true)
+  expect(readLocal('local')).toEqual({})
+  writeLocal('local', store2)
+  expect(deleteLocal('local', 'key1')).toEqual(true)
+  expect(readLocal('local')).toEqual({'key2':1, 'key3':{}})
+  deleteLocal('local')
+  writeLocal('local', store2)
+  expect(deleteLocal('local', ['key1', 'key2'])).toEqual(true)
+  expect(readLocal('local')).toEqual({'key3':{}})
+
+  let manager = new StoreManager('test')
+  manager.writeSession(store1)
+  expect(manager.deleteSession()).toBe(true)
+  expect(manager.readSession()).toEqual({})
+  manager.writeSession(store1)
+  manager.clear()
+  expect(manager.readSession()).toEqual({})
+
 })
 
 test('update storage', ()=>{

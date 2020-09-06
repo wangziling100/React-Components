@@ -2,6 +2,7 @@ export interface IDict{
     [propNames: string]: any
 }
 type IKey = string|string[]|null
+
 export function checkStorage(tableName: string, storeFunc:Storage, key:IKey=null):boolean{
     try{
         let storage: string|null = storeFunc.getItem(tableName)
@@ -91,7 +92,6 @@ export function updateStorage(  tableName:string,
                             store,
                             create)
         const _new = Object.assign(old, table)
-        console.log(old, _new, 'update')
         writeStorage(tableName, _new, storeFunc)
         return true
     }
@@ -107,6 +107,33 @@ export function writeStorage(   tableName:string,
     try{
         let tableString: string = JSON.stringify(table)
         storeFunc.setItem(tableName, tableString)
+        return true
+    }
+    catch(err){
+        console.log(err)
+        return false
+    }
+
+}
+
+export function deleteStorage(  tableName:string,
+                                storeFunc: Storage,
+                                key: IKey=null): boolean{
+    const table= readStorage(tableName, storeFunc)
+    try{
+        if(key===null){
+            writeStorage(tableName, {}, storeFunc)
+        }
+        else if(key instanceof Array){
+            for(let k of key){
+                delete table[k]
+            }
+            writeStorage(tableName, table, storeFunc)
+        }
+        else{
+            delete table[key]
+            writeStorage(tableName, table, storeFunc)
+        }
         return true
     }
     catch(err){
@@ -198,6 +225,14 @@ export function writeLocal(tableName: string, table: IDict):boolean{
     return writeStorage(tableName, table, localStorage)
 }
 
+export function deleteSession(tableName:string, key:IKey=null): boolean{
+    return deleteStorage(tableName, sessionStorage, key)
+}
+
+export function deleteLocal(tableName:string, key:IKey=null):boolean{
+    return deleteStorage(tableName, localStorage, key)
+}
+
 export class StoreManager{
     private structure: IDict
     private tableName: string
@@ -231,6 +266,21 @@ export class StoreManager{
             this.structure.keys, this.structure, create)
 
     }
+    
+
+    deleteSession(key: IKey=null){
+        return deleteSession(this.tableName, key)
+    }
+
+    deleteLocal(key: IKey=null){
+        return deleteLocal(this.tableName, key)
+    }
+
+    clear(){
+        this.deleteSession()
+        this.deleteLocal()
+    }
+
     updateSession(
         table:IDict, 
         create:boolean=true):boolean{
@@ -269,4 +319,6 @@ export class StoreManager{
             else return false
         }
     }
+
+
 }
