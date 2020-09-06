@@ -56,7 +56,7 @@
     "url": "https://github.com/wangziling100/React-Components/issues"
   },
   "dependencies": {
-    "@wangziling100/state-manager": "^0.6.0",
+    "@wangziling100/state-manager": "^0.6.2",
     "js-yaml": "^3.14.0"
   },
   "eslintConfig": {

@@ -1,7 +1,7 @@
 //import './css/tailwind.css';
 import * as React from 'react';
 import { useState } from 'react';
-import { Divider, Drawer, Collapse } from 'antd';
+import { Divider, Drawer, Empty } from 'antd';
 //import 'antd/dist/antd.css';
 import LoadConfig from './components/load-config'
 import { IConfig } from './types'
@@ -22,6 +22,7 @@ export default (props: IProps|undefined) => {
   const [ loadConfig, setLoadConfig ] = useState<IConfig>()
   //const [visible, setVisible] = useState(false)
   const [ configs, setConfigs ] = useState({})
+  const [ refresh, setRefresh] = useState(true)
   // Variables
   const id = 'soft-plugin-index'
   let data, drawerProps, visible
@@ -49,11 +50,11 @@ export default (props: IProps|undefined) => {
   stateManager.addState(id, 'configs', configs)
   stateManager.addFunction(id, 'setConfigs', setConfigs)
   stateManager.addToLocalSet(id, 'configs')
+  stateManager.addState(id, 'refresh', refresh)
+  stateManager.addFunction(id, 'setRefresh', setRefresh)
   // Effect
   useLocal('soft-plugin-index')
   // Components
-  const tmp = []
-  tmp.push(<div> test here </div>)
 
   return (
     <>
@@ -67,6 +68,9 @@ export default (props: IProps|undefined) => {
       >
         <LoadConfig setConfig={setLoadConfig} onLoaded={onConfigLoaded}/>
         <Divider> Plugin List </Divider>
+        { Object.keys(configs).length===0 
+          && <Empty description={'No Plugin'} image={Empty.PRESENTED_IMAGE_SIMPLE}/>
+        }
         <PluginList data={configs}/>
       </Drawer>
     </>

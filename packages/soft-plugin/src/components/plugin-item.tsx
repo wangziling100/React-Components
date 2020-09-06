@@ -17,18 +17,16 @@ export default (props: IProps) => {
     // States
     // Functions
     const deleteAction = ()=>{
-      console.log(field, stateManager.getStore(), 'delete1')
       stateManager.delete(field)
-      console.log(stateManager.getStore(), 'delete2')
       const setConfigs = stateManager.getFunction('soft-plugin-index', 'setConfigs')
       const configs = stateManager.getState('soft-plugin-index', 'configs')
-      console.log(configs, 'delete')
-      /*
+      const refresh = stateManager.getState('soft-plugin-index', 'refresh')
+      const setRefresh = stateManager.getFunction('soft-plugin-index', 'setRefresh')
       delete configs[field]
       setConfigs(configs)
       stateManager.addState('soft-plugin-index', 'configs', configs)
       stateManager.writeLocal('soft-plugin-index')
-      */
+      setRefresh(!refresh)
     }
     // Init
     for (let index in lineData){
