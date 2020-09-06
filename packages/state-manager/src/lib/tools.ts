@@ -347,14 +347,14 @@ export class StateManager {
         return store
     }
 
-    writeSession(id:string|string[], delay:number=0):NodeJS.Timeout{
+    writeSession(id:string|string[], delay:number=0){
         return setTimeout(()=>{
             const succeed = this.writeStorage('session', id)
             if(!succeed) console.log('Writing sessionStorage is failed')
         }, delay ) 
     }
 
-    writeLocal(id:string|string[], delay:number=0):NodeJS.Timeout{
+    writeLocal(id:string|string[], delay:number=0){
         return setTimeout(()=>{
             const succeed = this.writeStorage('local', id)
             if(!succeed) console.log('Writing localStorage is failed')
