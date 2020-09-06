@@ -54,6 +54,12 @@ export class StateManager {
         return this.store
     }
 
+    clear(id:IKey, key:IKey){
+        if(id===null){
+
+        }
+    }
+
     addState(id:string, key:string, value:any){
         if(this.store.state[id]===undefined
         || this.store.state[id]===null){
@@ -146,6 +152,79 @@ export class StateManager {
     }
 
     writeStorage(storage:string, id:IKey=null):boolean{
+        try{
+            let storeKeys: IDict
+            let store: IDict = {}
+            if (storage==='session') storeKeys = this.sessionKeys
+            else if (storage==='local') storeKeys = this.localKeys
+            else return false
+
+            if (id===null){
+                if(storeKeys['ALL']!==undefined){
+                    store = this.store.state
+                }
+                else{
+                    for (let index in storeKeys){
+                        const table = storeKeys[index]
+                        if(table['all']!==undefined){
+                            store[index] = this.store.state[index]
+                        }
+                        else{
+                            store[index] = table
+                        }
+                    }
+                }
+            }
+            else if(id instanceof Array){
+                for (let index in id){
+                    const _id = id[index]
+                    const table = storeKeys[_id]
+                    if(table['all']!==undefined){
+                        store[_id] = this.store.state[_id]
+                    }
+                    else{
+                        store[_id] = table
+                    }
+                }
+
+            }
+            else{
+                const table = storeKeys[id]
+                if(table['all']!==undefined){
+                    store[id] = this.store.state[id]
+                }
+                else{
+                    store[id] = table
+                }
+            }
+            // 也写入setFunc的索引
+            store = this.appendFunc(store)
+            for (let tableName in store){
+                if(this.storeManagers[tableName]===undefined){
+                    const manager = new StoreManager(tableName)
+                    this.storeManagers[tableName] = manager
+                }
+                const manager = this.storeManagers[tableName]
+                const table = store[tableName]
+                if (storage==='local'){
+                    const succeed = manager.updateLocal(table)
+                    if (!succeed) return false
+                }
+                else if (storage==='session'){
+                    const succeed = manager.updateSession(table)
+                    if (!succeed) return false
+                }
+            }
+            return true
+        }
+        catch (err){
+            console.log(err)
+            return false
+        }
+        
+    }
+
+    deleteStorage(storage:string, id:IKey=null):boolean{
         try{
             let storeKeys: IDict
             let store: IDict = {}
