@@ -39,7 +39,8 @@
       "!**/.github/**",
       "!**/dist/**",
       "!**/stories/**",
-      "!**/*config.**"
+      "!**/*config.**",
+      "!**/setupTests.js"
     ],
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
