@@ -54,6 +54,12 @@ export class StateManager {
         return this.store
     }
 
+    clear(id:IKey, key:IKey){
+        if(id===null){
+
+        }
+    }
+
     addState(id:string, key:string, value:any){
         if(this.store.state[id]===undefined
         || this.store.state[id]===null){
@@ -68,6 +74,42 @@ export class StateManager {
             this.store.function[id] = {}
         }
         this.store.function[id][key] = value
+    }
+
+    deleteState(
+    id:string, 
+    key:string|null=null):boolean{
+        try{
+            if(key===null) {
+                delete this.store.state[id]
+            }
+            else{
+                delete this.store.state[id][key]
+            }
+            return true
+        }
+        catch(err){
+            console.error(err)
+            return false
+        }
+    }
+
+    deleteFunction(
+    id:string, 
+    key:string|null=null):boolean{
+        try{
+            if(key===null) {
+                delete this.store.function[id]
+            }
+            else{
+                delete this.store.function[id][key]
+            }
+            return true
+        }
+        catch(err){
+            console.error(err)
+            return false
+        }
     }
 
     addTo(id:string|string[], key:IKey=null, func:string|null=null, storage:string):boolean{
@@ -129,6 +171,42 @@ export class StateManager {
         }
         
         
+    }
+
+    deleteKeys(
+    id:string|string[],
+    key:IKey=null):boolean{
+        try{
+            if(id instanceof Array) {
+                for(let el of id){
+                    delete this.localKeys[el]
+                    delete this.sessionKeys[el]
+                    delete this.loadFunctions[el]
+                }
+            }
+            else if(key===null){
+                delete this.localKeys[id]
+                delete this.sessionKeys[id]
+                delete this.loadFunctions[id]
+            }
+            else if(key instanceof Array){
+                for(let el of key){
+                    delete this.localKeys[id][el]
+                    delete this.sessionKeys[id][el]
+                    delete this.loadFunctions[id][el]
+                }
+            }
+            else{
+                delete this.localKeys[id][key]
+                delete this.sessionKeys[id][key]
+                delete this.loadFunctions[id][key]
+            }
+            return true
+        }
+        catch(err){
+            console.error(err)
+            return false
+        }
     }
 
     addToSessionSet(id:string|string[], 
@@ -207,6 +285,49 @@ export class StateManager {
                 else if (storage==='session'){
                     const succeed = manager.updateSession(table)
                     if (!succeed) return false
+                }
+            }
+            return true
+        }
+        catch (err){
+            console.log(err)
+            return false
+        }
+        
+    }
+
+    delete(id:IKey=null):boolean{
+        try{
+            if (id===null){
+                return false
+            }
+            else if(id instanceof Array){
+                for (let el of id){
+                    if (this.storeManagers[el]===undefined){
+                        console.error('Invalid table name!')
+                        return false
+                    }
+                    else{
+                        const manager = this.getManager(el)
+                        manager.clear()
+                        this.deleteState(el)
+                        this.deleteFunction(el)
+                        this.deleteKeys(el)
+                    }
+                }
+
+            }
+            else{
+                if (this.storeManagers[id]===undefined){
+                    console.error('Invalid table name!')
+                    return false
+                }
+                else{
+                    const manager = this.getManager(id)
+                    manager.clear()
+                    this.deleteState(id)
+                    this.deleteFunction(id)
+                    this.deleteKeys(id)
                 }
             }
             return true
@@ -406,7 +527,7 @@ export class StateManager {
         return null
     }
 
-    getManager(id:string){
+    getManager(id:string):StoreManager{
         if (this.storeManagers[id]===undefined){
             this.storeManagers[id] = new StoreManager(id)
         }
