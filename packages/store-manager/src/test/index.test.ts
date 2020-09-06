@@ -136,6 +136,9 @@ test('delete storage', ()=>{
   manager.writeSession(store1)
   expect(manager.deleteSession()).toBe(true)
   expect(manager.readSession()).toEqual({})
+  manager.writeSession(store1)
+  manager.clear()
+  expect(manager.readSession()).toEqual({})
 
 })
 
