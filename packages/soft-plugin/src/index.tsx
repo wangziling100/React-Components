@@ -9,7 +9,6 @@ import { stateManager, useLocal } from '@wangziling100/state-manager'
 import PluginList from './components/plugin-list';
 import { IDict } from './types';
 import { setVisible } from './lib/options';
-//import drawer from './components/drawer';
 interface IProps {
     data: Object 
     drawerProps: IDict
@@ -18,6 +17,7 @@ interface IProps {
 }
 
 export default (props: IProps|undefined) => {
+  console.log('index')
   // States
   const [ loadConfig, setLoadConfig ] = useState<IConfig>()
   //const [visible, setVisible] = useState(false)
@@ -37,13 +37,6 @@ export default (props: IProps|undefined) => {
     visible = false
     setVisible = ()=>{}
   }
-  const { Panel } = Collapse;
-  // Functions
-  /*
-  const showDrawer = () => {
-      setVisible(true)
-  }
-  */
   const onClose = () => {
       setVisible(false)
   }
@@ -64,15 +57,6 @@ export default (props: IProps|undefined) => {
 
   return (
     <>
-      {/*
-      <div  className='fixed right-0 mt-20 px-2 w-6 py-2
-                      bg-blue-300 break-all text-center text-indigo-700
-                      text-xs font-semibold uppercase
-                      cursor-pointer'
-            onClick={showDrawer}>
-        Plugin
-      </div>
-      */}
       <Drawer
         title="Plugin System"
         placement="right"
