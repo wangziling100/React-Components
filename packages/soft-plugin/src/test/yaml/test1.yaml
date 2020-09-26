@@ -14,7 +14,7 @@ lines:
   2:
     - props:
         css: ['mt-2', 'flex', 'justify-between']
-    - input: 
+    - password: 
         name: email
         css: ['w-32']
         placeholder: Email

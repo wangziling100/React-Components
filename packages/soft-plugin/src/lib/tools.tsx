@@ -1,5 +1,6 @@
 import Group from '../components/group'
 import Input from '../components/input'
+import Password from '../components/password'
 import Label from '../components/label'
 import Button from '../components/button'
 import Modal from '../components/modal'
@@ -43,6 +44,7 @@ export function dataMapComponent(data:IDict, field:string, key:number):any|null{
             case 'builder': component=<Builder {...props} key={key}/>; break;
             case 'input': component=<Input {...props} key={key}/>; break;
             case 'label': component=<Label {...props} key={key}/>; break;
+            case 'password': component=<Password {...props} key={key}/>;break;
             case 'textarea': {
                 component=<Textarea {...props} key={key}/>; 
                 break;

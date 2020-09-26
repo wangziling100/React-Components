@@ -31,6 +31,7 @@ export default (type:string,props:IDict) => {
             main = visible && <TextArea {...props} onChange={onChange}/>
             break;
         }
+        case 'password': main = visible && <Input.Password {...props} onChange={onChange}/>;break;
         default: main = null; break;
     }
     
