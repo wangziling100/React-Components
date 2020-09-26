@@ -11,6 +11,7 @@ var __assign = (this && this.__assign) || function () {
 };
 import Group from '../components/group';
 import Input from '../components/input';
+import Password from '../components/password';
 import Label from '../components/label';
 import Button from '../components/button';
 import Modal from '../components/modal';
@@ -58,6 +59,9 @@ export function dataMapComponent(data, field, key) {
                 break;
             case 'label':
                 component = React.createElement(Label, __assign({}, props, { key: key }));
+                break;
+            case 'password':
+                component = React.createElement(Password, __assign({}, props, { key: key }));
                 break;
             case 'textarea': {
                 component = React.createElement(Textarea, __assign({}, props, { key: key }));

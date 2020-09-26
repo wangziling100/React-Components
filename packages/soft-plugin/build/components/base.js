@@ -40,6 +40,9 @@ export default (function (type, props) {
             main = visible && React.createElement(TextArea, __assign({}, props, { onChange: onChange }));
             break;
         }
+        case 'password':
+            main = visible && React.createElement(Input.Password, __assign({}, props, { onChange: onChange }));
+            break;
         default:
             main = null;
             break;
