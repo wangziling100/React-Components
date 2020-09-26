@@ -1,18 +1,24 @@
 {
   "name": "@wangziling100/soft-plugin",
-  "version": "0.0.2",
+  "version": "0.1.19",
   "description": "> TODO: description",
   "author": "wangziling100 <wangziling1000@gmail.com>",
   "homepage": "https://github.com/wangziling100/React-Components#readme",
-  "main": "lib/soft-plugin.js",
+  "main": "./dist/index.js",
+  "types": "./src/index.d.ts",
   "license": "MIT",
   "directories": {
-    "lib": "lib",
+    "src": "src",
     "test": "./src/test"
   },
   "files": [
-    "lib",
-    "src"
+    "src/*d.ts",
+    "src/*d.ts.map",
+    "src/lib/*d.ts",
+    "src/lib/*d.ts.map",
+    "src/components/*d.ts",
+    "src/components/*d.ts.map",
+    "dist/*"
   ],
   "publishConfig": {
     "access": "public"
@@ -28,7 +34,8 @@
       "!**/coverage/**",
       "!**/.github/**",
       "!**/dist/**",
-      "!**/*config.**"
+      "!**/*config.**",
+      "!**/stories/**"
     ],
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
@@ -49,20 +56,8 @@
     "url": "https://github.com/wangziling100/React-Components/issues"
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.3",
-    "@testing-library/react": "^11.0.2",
-    "@testing-library/user-event": "^12.1.1",
-    "@types/jest": "^26.0.9",
-    "@types/node": "^14.0.27",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "@wangziling100/state-manager": "^0.1.4",
-    "antd": "^4.5.2",
-    "postcss-nested-ancestors": "^2.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
-    "typescript": "~4.0.2"
+    "@wangziling100/state-manager": "^0.6.2",
+    "js-yaml": "^3.14.0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -86,11 +81,18 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
+    "@testing-library/jest-dom": "^5.11.3",
+    "@testing-library/react": "^10.4.8",
+    "@testing-library/user-event": "^12.1.1",
     "@types/autoprefixer": "^9.7.2",
     "@types/classnames": "^2.2.10",
+    "@types/jest": "^26.0.9",
+    "@types/js-yaml": "^3.12.5",
+    "@types/node": "^14.0.27",
     "@types/postcss-import": "^12.0.0",
     "@types/react": "^16.9.45",
     "@types/react-dom": "^16.9.8",
+    "antd": "^4.5.2",
     "autoprefixer": "^9.8.6",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.1.0",
@@ -100,15 +102,21 @@
     "cssnano": "^4.1.10",
     "glob": "^7.1.6",
     "html-webpack-plugin": "^4.3.0",
+    "js-yaml": "^3.14.0",
     "mini-css-extract-plugin": "^0.11.0",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "postcss-mixins": "^6.2.3",
-    "purgecss-webpack-plugin": "^3.0.0",
+    "postcss-nested-ancestors": "^2.0.0",
+    "purgecss-webpack-plugin": "^2.3.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.2",
     "style-loader": "^1.2.1",
     "tailwindcss": "^1.6.2",
     "ts-jest": "^26.2.0",
-    "typescript": "^4.0.2",
+    "ts-loader": "^8.0.3",
+    "typescript": "~3.9.7",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }

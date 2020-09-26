@@ -1,0 +1,71 @@
+name: test2
+lines:
+  1:
+    - props:
+        css: ['flex']
+        visible: true
+    - input:
+        name: input1
+        css: ['w-20']
+        visible: true
+        placeholder: test2
+        param1: 123
+        param2: 456
+  2:
+    - props:
+        css: []
+    - group:
+      - props:
+          css: ['bg-red-500', 'flex']
+      - label:
+          content: abc
+      - label:
+          content: bcd
+      - group:
+        - props:
+            css: ['bg-yellow-500']
+        - label:
+            content: sub1
+        - label:
+            content: sub2
+    - group:
+      - props:
+          css: ['bg-blue-500']
+          visible: false
+      - label:
+          content: 123
+      - label:
+          content: 654
+  3:
+    - props:
+        css: []
+    - button:
+        css: ['flex', 'justify-end', 'mt-2']
+        content: submit
+        action:
+          object: input1
+          type: visible
+          option: change
+         
+  6:
+    - props:
+        css: []
+    - button:
+        css: []
+        content: notification
+        action:
+          object: notification1
+          type: info
+          option: notification
+    - notification:
+        type: warning
+        duration: 3
+        message: Notification
+        description: Test
+        name: notification1
+        placement: topLeft
+
+
+        
+          
+          
