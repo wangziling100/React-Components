@@ -1,4 +1,5 @@
 import { stateManager } from '@wangziling100/state-manager'
+// 设置目标组件的数据
 export function setData(
 id:string, 
 stateKey:string,
@@ -26,5 +27,19 @@ fn:Function|null=null
     catch(err){
         console.log(err)
         return false
+    }
+}
+//获取所有组件的数据
+export function getAllData(
+id: string,
+): any{
+    try{
+        const allData = stateManager.getStore().state[id]
+        console.log(stateManager.getStore().state)
+        console.log(allData, 'get all data')
+        return allData
+    }
+    catch(err){
+        return null
     }
 }

@@ -13,6 +13,8 @@ import * as React from 'react'
 import * as Switch from '../actions/switch'
 import * as IO from '../actions/io'
 import * as Info from '../actions/info'
+import * as Event from '../actions/event'
+import * as Service from '../actions/service'
 import { stateManager } from '@wangziling100/state-manager'
 
 export function dataMapComponent(data:IDict, field:string, key:number):any|null{
@@ -73,7 +75,7 @@ export function dataMapAction(data:IDict){
     return ret
 }
 export function typeMapActionName(name:string, type:string):string{
-    const actions = ['visible', 'io', 'info']
+    const actions = ['visible', 'io', 'info', 'service']
     let exist = false
     for (let n of actions){
         if(type===n) exist = true
@@ -90,6 +92,62 @@ export function extractProps(data:Array<IDict>, type:string){
     const others = data.slice(1)
     props['data'] = others
     return props
+}
+export function extractEvents(props:IDict):IDict{
+    let ret: IDict = {}
+    const field = props.field
+    const actions = props.actions
+    if (actions===undefined) return props
+    const actionsChain: IDict = {}
+    const actionsStore: IDict = {}
+    for(let act of actions){
+        // 自己的事件， 所有obj无用
+        const key = Object.keys(act)[0]
+        console.log(key, 'key')
+        switch(key){
+            case 'onClick':{
+                const action =  findActionByTypeOption(field, act[key])
+                try{
+                    actionsChain['onClick'].push(action)
+                }
+                catch{
+                    actionsChain['onClick'] = [action]
+                }
+                actionsStore['onClick'] = (e:any, input: Function[]) => Event.onClick(e, actionsChain['onClick'])
+                break
+            }
+            default: break;
+        }
+    }
+    console.log(actionsStore, 'action store')
+    for (let index in actionsStore){
+        props[index] = actionsStore[index]
+    }
+    return props
+}
+
+export function findActionByTypeOption(field:string, action: IDict){
+    const type = action.type
+    const option = action.option
+    switch (type){
+        case 'io':{
+            if (option==='getAllData') {
+                console.log('get all data')
+                return ()=>IO.getAllData(field)
+            }
+        }
+        case 'service':{
+            if (option==='submit'){
+                const url = action.url
+                const method = action.method
+                console.log(method, 'method')
+                return (e:any, data:any)=>Service.submit(url, data, method)
+            }
+            else if (option==='process'){
+                return (e:any, res:Promise<any>)=>Service.processResponse(res)
+            }
+        }
+    }
 }
 
 export function xToProps(props:IDict):IDict{

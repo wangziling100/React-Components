@@ -46,6 +46,12 @@ lines:
           object: input1
           type: visible
           option: change
+        actions:
+          - onClick:
+              object: self
+              type: io
+              option: getData
+
          
   6:
     - props:
