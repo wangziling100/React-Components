@@ -1,0 +1,46 @@
+name: test5
+lines:
+  1:
+    - props:
+        css: ['flex']
+        visible: true
+    - menu:
+      - props:
+          css: []
+          style: {{ width: 256 }}
+          mode: inline
+      - menu-item:
+          key: 1
+          content: item1
+      - menu-item:
+          key: 2
+          content: item2
+  2:
+    - props:
+        css: []
+    - dropdown:
+      - props:
+          css: []
+      - overlay:
+        - menu:
+          - props:
+              css: []
+              name: menu1
+              save: true
+              actions:
+                - onClick:
+                    object: button1
+                    type: io
+                    option: set
+          - menu-item:
+              key: setting1
+              content: item1
+          - menu-item:
+              key: setting2
+              content: item2
+      - button:
+          name: button1
+          save: true
+          content: Dropdown
+      
+        

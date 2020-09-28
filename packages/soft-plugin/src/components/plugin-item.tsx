@@ -36,7 +36,6 @@ export default (props: IProps) => {
         const line = <Line {...props}/>
         lines.push(line)
     }
-    console.log(lines, 'lines')
     const main = (
       <>
         <div 

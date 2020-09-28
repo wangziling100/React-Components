@@ -35,8 +35,8 @@ id: string,
 ): any{
     try{
         const allData = stateManager.getStore().state[id]
-        console.log(stateManager.getStore().state)
-        console.log(allData, 'get all data')
+        //console.log(stateManager.getStore().state)
+        //console.log(allData, 'get all data')
         return allData
     }
     catch(err){

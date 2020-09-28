@@ -1,10 +1,11 @@
 import * as React from 'react'
 import { IDict } from '../types'
-import { Modal, Drawer } from 'antd'
+import { Modal, Drawer, Menu, Dropdown } from 'antd'
 import { strToBoolean, typeMapActionName } from '../lib/tools'
 import { useState } from 'react'
 import { stateManager } from '@wangziling100/state-manager'
 import cn from 'classnames'
+import dropdown from './dropdown'
 
 export default (props:IDict) => {
     let main: any
@@ -48,7 +49,7 @@ export default (props:IDict) => {
             break;
         }
         case 'drawer': {
-            console.log(props, 'base com drawer')
+            //console.log(props, 'base com drawer')
             main = <Drawer 
             {...props}
             visible={visible}>
@@ -57,6 +58,21 @@ export default (props:IDict) => {
             break;
 
         }
+        case 'menu': {
+            main = <Menu
+            {...props}
+            >
+                {props.children}
+            </Menu>
+            break;
+        }
+        case 'dropdown': {
+            main = <Dropdown {...props} overlay={props.overlay} >
+                {props.children}
+            </Dropdown>
+            break
+        }
+        
         default: main = <>{props.children}</>; break;
     }
     

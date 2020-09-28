@@ -18,34 +18,6 @@ method:string='post'){
                         accept: 'application/json'
                     }
                 })
-
-                /*
-                .then(res=>{console.log(res)})
-                .catch(err=>console.log(err))
-
-                axios.post(url, {
-                    //token: token,
-                    userName: 'wangziling100',
-                    password: 'test',
-                    option: 'delete',
-                    repo: 'lambdas',
-                    secrets: {
-                        TEST1: 'test'
-                    }
-                },
-                {
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                        accept: 'application/json'
-                    }
-                })
-                .then(res=>{
-                    console.log(res)
-                })
-                .catch(err=>{
-                    console.error(err)
-                })
-                */
             }
             default: return null
         }

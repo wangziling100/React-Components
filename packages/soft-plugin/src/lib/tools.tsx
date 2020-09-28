@@ -7,7 +7,10 @@ import Modal from '../components/modal'
 import Textarea from '../components/textarea'
 import Drawer from '../components/drawer'
 import Builder from '../components/builder'
+import Menu from '../components/menu'
+import MenuItem from '../components/menu-item'
 import Notification from '../components/notification'
+import Dropdown from '../components/dropdown'
 import { IDict } from '../types'
 import * as React from 'react'
 import * as Switch from '../actions/switch'
@@ -43,6 +46,20 @@ export function dataMapComponent(data:IDict, field:string, key:number):any|null{
                 component = <Drawer {...newProps} key={key}/>
                 break
             }
+            case 'menu': {
+                let newProps = extractProps(props, 'menu')
+                newProps['field'] = field
+                //newProps = xToProps(newProps)
+                component = <Menu {...newProps} key={key}/>;
+                break;
+            }
+            case 'dropdown': {
+                let newProps = extractProps(props, 'dropdown')
+                newProps['field'] = field
+                newProps = xToProps(newProps)
+                component = <Dropdown {...newProps} key={key}/>;
+                break;
+            }
             case 'builder': component=<Builder {...props} key={key}/>; break;
             case 'input': component=<Input {...props} key={key}/>; break;
             case 'label': component=<Label {...props} key={key}/>; break;
@@ -53,6 +70,9 @@ export function dataMapComponent(data:IDict, field:string, key:number):any|null{
             }
             case 'button': component=<Button {...props} key={key}/>; break;
             case 'notification': component=<Notification {...props} key={key}/>; break;
+            case 'menu-item': {
+                component=<MenuItem {...props} key={props.key}/>; break;
+            }
             default: component=null; break;
         }
         return component
@@ -93,17 +113,21 @@ export function extractProps(data:Array<IDict>, type:string){
     props['data'] = others
     return props
 }
-export function extractEvents(props:IDict):IDict{
+interface IOUTExtractEvent {
+    succeed: boolean,
+    props: IDict,
+    actions: IDict
+}
+export function extractEvents(props:IDict):IOUTExtractEvent{
     let ret: IDict = {}
     const field = props.field
     const actions = props.actions
-    if (actions===undefined) return props
+    if (actions===undefined) return { succeed: false, props: props, actions:{}}
     const actionsChain: IDict = {}
     const actionsStore: IDict = {}
     for(let act of actions){
         // 自己的事件， 所有obj无用
         const key = Object.keys(act)[0]
-        console.log(key, 'key')
         switch(key){
             case 'onClick':{
                 const action =  findActionByTypeOption(field, act[key])
@@ -119,28 +143,42 @@ export function extractEvents(props:IDict):IDict{
             default: break;
         }
     }
-    console.log(actionsStore, 'action store')
     for (let index in actionsStore){
         props[index] = actionsStore[index]
     }
-    return props
+    if (Object.keys(actionsStore).length>0){
+        return {
+            succeed: true,
+            props: props,
+            actions: actionsStore
+        }
+    }
+    else {
+        return {
+            succeed: false,
+            props: props,
+            actions: {}
+        }
+    }
 }
 
 export function findActionByTypeOption(field:string, action: IDict){
     const type = action.type
     const option = action.option
+    const obj = action.object
     switch (type){
         case 'io':{
             if (option==='getAllData') {
-                console.log('get all data')
                 return ()=>IO.getAllData(field)
+            }
+            else if (option==='set'){
+                return (e:any, res:any)=>IO.setData(field, obj, obj, e)
             }
         }
         case 'service':{
             if (option==='submit'){
                 const url = action.url
                 const method = action.method
-                console.log(method, 'method')
                 return (e:any, data:any)=>Service.submit(url, data, method)
             }
             else if (option==='process'){

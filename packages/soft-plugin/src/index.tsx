@@ -17,7 +17,6 @@ interface IProps {
 }
 
 export default (props: IProps|undefined) => {
-  console.log('index')
   // States
   const [ loadConfig, setLoadConfig ] = useState<IConfig>()
   //const [visible, setVisible] = useState(false)

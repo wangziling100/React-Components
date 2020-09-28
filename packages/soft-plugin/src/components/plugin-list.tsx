@@ -9,7 +9,7 @@ interface IProps{
 
 export default (props:IProps) => {
     const data = props.data;
-    console.log(data, 'plugin list')
+    //console.log(data, 'plugin list')
     const panels = []
     const { Panel } = Collapse
     let cnt = 1

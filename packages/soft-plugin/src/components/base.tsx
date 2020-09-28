@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { IDict } from '../types'
-import { Input } from 'antd'
+import { Input, Menu } from 'antd'
 import { strToBoolean, addToStore } from '../lib/tools'
 import { useState } from 'react'
 
@@ -32,6 +32,10 @@ export default (type:string,props:IDict) => {
             break;
         }
         case 'password': main = visible && <Input.Password {...props} onChange={onChange}/>;break;
+        case 'menu-item': {
+            main = visible && <Menu.Item {...props}> {props.content}</Menu.Item>
+            break
+        }
         default: main = null; break;
     }
     

@@ -36,11 +36,30 @@ lines:
   4:
     - props:
         css: ['mt-2', 'flex', 'justify-between']
-    - input: 
-        name: option
-        save: true
-        css: ['w-32']
-        placeholder: create or delete
+    - dropdown: 
+      - props:
+          css: []
+      - overlay:
+        - menu:
+          - props:
+              css: []
+              name: menu1
+              save: true
+              actions:
+                - onClick:
+                    object: button1
+                    type: io
+                    option: set
+          - menu-item:
+              key: create
+              content: create
+          - menu-item:
+              key: delete
+              content: delete
+      - button:
+          name: button1
+          save: true
+          content: --------
     - label:
         css: ['text-blue-500']
         content: 'Option'
