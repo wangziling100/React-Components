@@ -10,7 +10,7 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import * as React from 'react';
-import { Input } from 'antd';
+import { Input, Menu } from 'antd';
 import { strToBoolean, addToStore } from '../lib/tools';
 import { useState } from 'react';
 export default (function (type, props) {
@@ -43,6 +43,12 @@ export default (function (type, props) {
         case 'password':
             main = visible && React.createElement(Input.Password, __assign({}, props, { onChange: onChange }));
             break;
+        case 'menu-item': {
+            main = visible && React.createElement(Menu.Item, __assign({}, props),
+                " ",
+                props.content);
+            break;
+        }
         default:
             main = null;
             break;
