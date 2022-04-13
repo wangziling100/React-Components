@@ -111,7 +111,7 @@
     "purgecss-webpack-plugin": "^2.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.2",
+    "react-scripts": "5.0.1",
     "style-loader": "^1.2.1",
     "tailwindcss": "^1.6.2",
     "ts-jest": "^26.2.0",
